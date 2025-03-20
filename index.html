@@ -17,6 +17,7 @@
     <meta name="theme-color" content="#EB0028" />
     <meta name="msapplication-TileColor" content="#EB0028" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#EB0028" />
+    <link rel="prefetch" href="/tickets" />
     <style>
       body {
         background: #000000;
@@ -24,19 +25,37 @@
     </style>
   </head>
   <body>
-    <img
-      src="logo-white.png"
-      alt="TEDxUNSW"
+    <div
       style="
-        display: block;
-        margin: 0 auto;
-        max-width: 100%;
-        height: auto;
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        text-align: center;
+        width: 100%;
       "
-    />
+    >
+      <img
+        src="logo-white.png"
+        alt="TEDxUNSW"
+        style="max-width: 100%; height: auto"
+      />
+      <a
+        href="/tickets"
+        style="
+          display: inline-block;
+          text-align: center;
+          background-color: #eb0028;
+          color: #ffffff;
+          text-decoration: none;
+          font-family: Arial, sans-serif;
+          font-size: 1.5rem;
+          padding: 0.5rem 1rem;
+          border-radius: 0.5rem;
+        "
+      >
+        Get Tickets
+      </a>
+    </div>
   </body>
 </html>
