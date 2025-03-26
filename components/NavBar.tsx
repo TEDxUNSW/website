@@ -4,10 +4,13 @@ import hamburg from "../public/hamburg.svg"
 import facebook from "../public/facebook.svg"
 import insta from "../public/instagram.svg"
 
+
+
 export default function NavBar({
   }) {
     return (
       <header>
+        
         <div className="flex justify-between items-center bg-white text-black">
           <div className="w-50 flex-none ">
             <Image src={logo} alt="TEDxUNSW logo"/>
@@ -33,6 +36,8 @@ export default function NavBar({
             </div>
           </div>
         </div>
+
+
       </header>
     );
   }
