@@ -8,7 +8,7 @@ export default function NavBar({
   }) {
     return (
       <header>
-        <div className="flex flex-row min-w-screen max-w-screen items-center bg-white text-black h-15">
+        <div className="flex flex-row items-center bg-white text-black h-15">
           <Image className="flex flex-8 shrink-0 grow-0" src={logo} alt="TEDxUNSW logo" width="130"/>
           <div className="flex max-[37rem]:flex-20  min-[37rem]:flex-1 min-[43rem]:flex-2 min-[47rem]:flex-3 md:flex-4 lg:flex-5 justify-between"></div>
           <div className="flex flex-auto shrink-0 justify-between">
@@ -31,6 +31,7 @@ export default function NavBar({
                 <div className="flex-initial"></div>
                 <Image src={hamburg} alt="Options" className="flex flex-none"/>
             </div>
+            <div className="flex max-[37rem]:hidden flex-1"></div>
           </div>
         </div>
       </header>
