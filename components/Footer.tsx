@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="absolute z-0 w-full h-full bottom-0">
         <div className="flex flex-col justify-end items-center w-full h-full">
           <Wave className="object-cover w-[400%] h-auto" />
-          <div className="bg-[rgb(226,72,67)] h-50 w-full" />
+          <div className="bg-[rgb(226,72,67)] h-[80%] w-full"></div>
         </div>
       </div>
 
