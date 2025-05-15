@@ -1,5 +1,13 @@
 import Title from "../components/Title";
-import VideoComponent from "../components/VideoComponent";
+import VideoBlock from "@/components/VideoBlock";
+
+const srcs = [
+  { src: "https://www.youtube.com/embed/oGxSeX3_iIA?autoplay=1" },
+  { src: "https://www.youtube.com/embed/abkWsmSdOVo?autoplay=1" },
+  { src: "https://www.youtube.com/embed/vE0cfk34YkQ?autoplay=1" },
+  { src: "https://www.youtube.com/embed/OajPRC_8WSk?autoplay=1" },
+  { src: "https://www.youtube.com/embed/UpBuBXPv5Aw?autoplay=1" },
+];
 
 export default function Home() {
   return (
@@ -31,7 +39,13 @@ export default function Home() {
               route="/talks"
             />
             {/* this is where talks are recommended */}
-            <VideoComponent />
+            <div className="bg-radial from-black to-proper-red border-4 ">
+              <div className="flex justify-between">
+                {srcs.map((src) => {
+                  return <VideoBlock src={src.src} />;
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>
