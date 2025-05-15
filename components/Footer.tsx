@@ -3,12 +3,15 @@ import Logo from "../public/logo-no-color.svg";
 
 export default function Footer() {
   return (
-    <footer className="text-white overflow-hidden relative h-220">
-      <div className="absolute inset-0 left-1/2 -translate-x-1/2 w-[105%]">
-        <Wave className="w-full object-cover" />
-        <div className="bg-[#e24843] h-[100%]" />
+    <footer className="text-white relative overflow-hidden">
+      <div className="absolute z-0 w-full h-full bottom-0">
+        <div className="flex flex-col justify-end items-center w-full h-full">
+          <Wave className="object-cover w-[400%] h-auto" />
+          <div className="bg-[rgb(226,72,67)] h-50 w-full" />
+        </div>
       </div>
-      <div className="relative pt-64 w-[75%] mx-auto">
+
+      <div className="relative z-10 pt-64 w-[75%] mx-auto pb-20">
         <div className="w-[80%] mx-auto">
           <h1 className="text-center text-8xl font-bold">TEDxUNSW</h1>
           <div className="flex flex-row justify-center text-black">
