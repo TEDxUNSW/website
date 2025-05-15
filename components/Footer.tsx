@@ -5,8 +5,7 @@ import Logo from "../public/logo-no-color.svg";
 import { useState } from "react";
 
 export default function Footer() {
-  const [email, setEmail] = useState<string | undefined>(undefined);
-  const [cursor, setCursor] = useState('crosshair');
+  const [email, setEmail] = useState<string>("");
 
   return (
     <footer className="text-white relative overflow-hidden">
@@ -27,7 +26,7 @@ export default function Footer() {
             <div className="flex flex-row items-center">
               <input
                 type="email"
-                placeholder="Your email address "
+                placeholder="Your email address"
                 className="ml-4 p-2 underline underline-offset-10 decoration-black placeholder:text-black text-2xl text-bold"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
