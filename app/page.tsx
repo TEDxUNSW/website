@@ -1,4 +1,5 @@
-import Title from '../components/Title'
+import Title from "../components/Title";
+import VideoComponent from "../components/VideoComponent";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
               route="/talks"
             />
             {/* this is where talks are recommended */}
+            <VideoComponent />
           </div>
         </div>
       </div>
