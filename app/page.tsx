@@ -1,7 +1,6 @@
 "use client";
 
-
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 import Title from "../components/Title";
 import VideoComponents from "@/components/VideoComponents";
@@ -12,30 +11,30 @@ function getWindowDimensions() {
     const { innerWidth: width, innerHeight: height } = window;
     return {
       width,
-      height
+      height,
     };
   }
 }
 
 function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
 
   useEffect(() => {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
     }
     if (typeof window !== "undefined") {
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, []);
 
   return windowDimensions;
 }
-//
 
 const srcs = [
-  
   {
     src: "https://www.youtube.com/embed/abkWsmSdOVo?autoplay=1",
     titleImg: "LennyVartanian.png",
@@ -75,23 +74,23 @@ const srcs = [
 ];
 
 export default function Home() {
-  const width: number|undefined = useWindowDimensions()?.width;
+  const width: number | undefined = useWindowDimensions()?.width;
 
-  let imageEndPoints = 3
+  let imageEndPoints = 3;
 
   if (typeof width !== "undefined") {
     if (width < 500) {
       imageEndPoints = 1;
     } else if (width < 900) {
       imageEndPoints = 2;
-    } 
+    }
   }
 
   return (
     <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
       <div className="flex flex-col items-center justify-items-center min-h-screen  gap-16 sm: font-[family-name:var(--font-handjet)] text-5xl">
         In Plain Sight
-        {/* mission&&talks recommadation session */}
+        {/* mission&&talks recommendation session */}
         <div className="flex flex-1 bg-[url('/BlackBackground.png')]  bg-repeat bg-contain w-screen h-screen ">
           <div className="p-8 px-12 flex-col flex items-start justify-between text-white gap-5 h-96 w-full font-[family-name:var(--font-geist-mono)] font-bold md:pr-52 md:px-20">
             <div className="flex gap-5 flex-col sm:flex-row md:gap-20">
@@ -118,9 +117,21 @@ export default function Home() {
               />
               {/* this is where talks are recommended */}
               <div>
-                <VideoComponents start={0} end={imageEndPoints *1} srcs={srcs} />
-                <VideoComponents start={imageEndPoints * 1} end={imageEndPoints * 2} srcs={srcs} />
-                <VideoComponents start={imageEndPoints * 2} end={imageEndPoints * 3} srcs={srcs} />
+                <VideoComponents
+                  start={0}
+                  end={imageEndPoints * 1}
+                  srcs={srcs}
+                />
+                <VideoComponents
+                  start={imageEndPoints * 1}
+                  end={imageEndPoints * 2}
+                  srcs={srcs}
+                />
+                <VideoComponents
+                  start={imageEndPoints * 2}
+                  end={imageEndPoints * 3}
+                  srcs={srcs}
+                />
               </div>
             </div>
           </div>
