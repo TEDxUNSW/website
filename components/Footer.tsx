@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="flex flex-row items-center">
               <input
                 type="email"
-                placeholder="Your email address"
+                placeholder="Your email address "
                 className="ml-4 p-2 underline underline-offset-10 decoration-black placeholder:text-black text-2xl text-bold"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
