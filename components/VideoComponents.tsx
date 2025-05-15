@@ -9,7 +9,7 @@ export default function VideoComponents({start, end, srcs}: videoComponentObject
     <div className="flex justify-between">
       {srcs.slice(start,end).map((src) => {
         return (
-          <VideoBlock src={src.src} titleImg={src.titleImg} title={src.title}/>
+          <VideoBlock key={src.src} src={src.src} titleImg={src.titleImg} title={src.title}/>
         )
       })}
     </div>
