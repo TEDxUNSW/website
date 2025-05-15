@@ -8,7 +8,9 @@ export default function NavBar({}) {
   return (
     <header>
       <div className="flex flex-row items-center bg-white text-black h-15">
-        <Logo className="shrink-0 grow-0" width={180} />
+        <Link href = "/">
+          <Logo className="shrink-0 grow-0" width={180} />
+        </Link>
         <div className="max-[42rem]:flex-20 min-[42rem]:flex-1 min-[43rem]:flex-2 min-[47rem]:flex-3 md:flex-4 lg:flex-5"></div>
         <div className="flex flex-auto shrink-0 justify-between">
           <div className="flex max-[42rem]:hidden flex-30 shrink-0 justify-between items-center font-helvetica text-1xl font-bold">
