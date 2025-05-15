@@ -1,7 +1,12 @@
+"use client";
+
 import Wave from "../public/wave.svg";
 import Logo from "../public/logo-no-color.svg";
+import { useState } from "react";
 
 export default function Footer() {
+  const [email, setEmail] = useState<string>("");
+
   return (
     <footer className="text-white relative overflow-hidden">
       <div className="absolute z-0 w-full h-full bottom-0">
@@ -23,8 +28,11 @@ export default function Footer() {
                 type="email"
                 placeholder="Your email address"
                 className="ml-4 p-2 underline underline-offset-10 decoration-black placeholder:text-black text-2xl text-bold"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+
               />
-              <button className="ml-4 p-2 bg-black text-white">Submit</button>
+              <button className="ml-4 p-2 bg-black text-white" onClick={() => setEmail("")}>Submit</button>
             </div>
           </div>
         </div>
