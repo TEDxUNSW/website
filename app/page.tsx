@@ -1,12 +1,38 @@
 import Title from "../components/Title";
 import VideoBlock from "@/components/VideoBlock";
+import VideoComponents from "@/components/VideoComponents";
 
 const srcs = [
-  { src: "https://www.youtube.com/embed/oGxSeX3_iIA?autoplay=1" },
-  { src: "https://www.youtube.com/embed/abkWsmSdOVo?autoplay=1" },
-  { src: "https://www.youtube.com/embed/vE0cfk34YkQ?autoplay=1" },
-  { src: "https://www.youtube.com/embed/OajPRC_8WSk?autoplay=1" },
-  { src: "https://www.youtube.com/embed/UpBuBXPv5Aw?autoplay=1" },
+  {
+    src: "https://www.youtube.com/embed/oGxSeX3_iIA?autoplay=1",
+    titleImg: "placeholder.svg",
+    title:
+      "A Deep Dive of Sydney’s Infamous Eight-Legged Serial Killers | Caitlin Creak | Critical Angles ",
+  },
+  {
+    src: "https://www.youtube.com/embed/abkWsmSdOVo?autoplay=1",
+    titleImg: "placeholder.svg",
+    title:
+      "Refocusing the fitness industry on health | Lenny Vartanian | In Plain Sight",
+  },
+  {
+    src: "https://www.youtube.com/embed/vE0cfk34YkQ?autoplay=1",
+    titleImg: "placeholder.svg",
+    title:
+      "The beauty of taking a photo every day | James Tran | In Plain Sight",
+  },
+  {
+    src: "https://www.youtube.com/embed/OajPRC_8WSk?autoplay=1",
+    titleImg: "placeholder.svg",
+    title:
+      "The Learning Blind Spot: Why We Miss What Matters | Sasha Vassar | In Plain Sight",
+  },
+  {
+    src: "https://www.youtube.com/embed/seRkEyP6v5Q?autoplay=1",
+    titleImg: "placeholder.svg",
+    title:
+      "Teaching and the vanishing art of connection | Steven Most | Red Threads",
+  },
 ];
 
 export default function Home() {
@@ -40,11 +66,9 @@ export default function Home() {
             />
             {/* this is where talks are recommended */}
             <div className="bg-radial from-black to-proper-red border-4 ">
-              <div className="flex justify-between">
-                {srcs.map((src) => {
-                  return <VideoBlock src={src.src} />;
-                })}
-              </div>
+              <VideoComponents start={0} end={3} srcs={srcs} />
+              <div className="h-10"></div>
+              <VideoComponents start={3} end={5} srcs={srcs} />
             </div>
           </div>
         </div>
