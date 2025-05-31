@@ -35,8 +35,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} antialiased`}
       >
         <NavBar />
-        {children}
-        <Footer />
+        <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );
