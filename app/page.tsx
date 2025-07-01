@@ -1,41 +1,87 @@
+"use client";
+
+
+import { useState, useEffect } from 'react';
+
 import Title from "../components/Title";
-import VideoBlock from "@/components/VideoBlock";
 import VideoComponents from "@/components/VideoComponents";
 
+// https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+//
+
 const srcs = [
-  {
-    src: "https://www.youtube.com/embed/oGxSeX3_iIA?autoplay=1",
-    titleImg: "placeholder.svg",
-    title:
-      "A Deep Dive of Sydney’s Infamous Eight-Legged Serial Killers | Caitlin Creak | Critical Angles ",
-  },
+  
   {
     src: "https://www.youtube.com/embed/abkWsmSdOVo?autoplay=1",
-    titleImg: "placeholder.svg",
+    titleImg: "LennyVartanian.png",
     title:
       "Refocusing the fitness industry on health | Lenny Vartanian | In Plain Sight",
   },
   {
     src: "https://www.youtube.com/embed/vE0cfk34YkQ?autoplay=1",
-    titleImg: "placeholder.svg",
+    titleImg: "JamesTran.png",
     title:
       "The beauty of taking a photo every day | James Tran | In Plain Sight",
   },
   {
     src: "https://www.youtube.com/embed/OajPRC_8WSk?autoplay=1",
-    titleImg: "placeholder.svg",
+    titleImg: "SashaVassar.png",
     title:
       "The Learning Blind Spot: Why We Miss What Matters | Sasha Vassar | In Plain Sight",
   },
   {
+    src: "https://www.youtube.com/embed/ddogc3GvBN4?autoplay=1",
+    titleImg: "KateBrandy.png",
+    title:
+      "We Prepare to Survive Disasters But Not to Cope With What Comes After | Kate Brady | TEDxUNSW Salon",
+  },
+  {
     src: "https://www.youtube.com/embed/seRkEyP6v5Q?autoplay=1",
-    titleImg: "placeholder.svg",
+    titleImg: "StevenMost.png",
     title:
       "Teaching and the vanishing art of connection | Steven Most | Red Threads",
+  },
+  {
+    src: "https://www.youtube.com/embed/oGxSeX3_iIA?autoplay=1",
+    titleImg: "CaitlinCreek.png",
+    title:
+      "A Deep Dive of Sydney’s Infamous Eight-Legged Serial Killers | Caitlin Creak | Critical Angles ",
   },
 ];
 
 export default function Home() {
+  const { width } = useWindowDimensions();
+
+  let imageEndPoints = 3
+
+  if (width < 500) {
+    imageEndPoints = 1;
+  } else if (width < 900) {
+    imageEndPoints = 2;
+  } 
+
   return (
     <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
       <div className="flex flex-col items-center justify-items-center min-h-screen  gap-16 sm: font-[family-name:var(--font-handjet)] text-5xl">
@@ -58,7 +104,7 @@ export default function Home() {
                 in reprehenderit in voluptate velit esse cillum dolore
               </p>
             </div>
-            <div className="flex gap-20">
+            <div className="flex flex-col gap-10 md:gap-20 sm:flex-row">
               <Title
                 titleLg="Talks"
                 titleSm="More"
@@ -67,8 +113,9 @@ export default function Home() {
               />
               {/* this is where talks are recommended */}
               <div>
-                <VideoComponents start={0} end={3} srcs={srcs} />
-                <VideoComponents start={3} end={5} srcs={srcs} />
+                <VideoComponents start={0} end={imageEndPoints *1} srcs={srcs} />
+                <VideoComponents start={imageEndPoints * 1} end={imageEndPoints * 2} srcs={srcs} />
+                <VideoComponents start={imageEndPoints * 2} end={imageEndPoints * 3} srcs={srcs} />
               </div>
             </div>
           </div>
