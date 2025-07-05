@@ -8,11 +8,13 @@ import VideoComponents from "@/components/VideoComponents";
 
 // https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
+  if (typeof window !== "undefined") {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
 }
 
 function useWindowDimensions() {
@@ -22,9 +24,10 @@ function useWindowDimensions() {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
     }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    if (typeof window !== "undefined") {
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
 
   return windowDimensions;
@@ -72,15 +75,17 @@ const srcs = [
 ];
 
 export default function Home() {
-  const { width } = useWindowDimensions();
+  const width: number|undefined = useWindowDimensions()?.width;
 
   let imageEndPoints = 3
 
-  if (width < 500) {
-    imageEndPoints = 1;
-  } else if (width < 900) {
-    imageEndPoints = 2;
-  } 
+  if (typeof width !== "undefined") {
+    if (width < 500) {
+      imageEndPoints = 1;
+    } else if (width < 900) {
+      imageEndPoints = 2;
+    } 
+  }
 
   return (
     <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
