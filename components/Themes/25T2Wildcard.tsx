@@ -2,18 +2,18 @@ import Link from "next/link";
 
 export default function WildCard25T2() {
   return (
-    <div className="flex flex-col relative items-center font-imfellEng justify-center w-full h-screen bg-[#f8f7f2]">
+    <div className="flex flex-col relative items-center font-imfellEng justify-center w-full h-full lg:h-screen bg-[#f8f7f2]">
       <div className="absolute bottom-0 left-0 w-full ">
         <div className="relative w-2/3 h-[200px]">
           <img
             src="/WildcardAsset/RedLip.png"
             alt="25T2 Wildcard"
-            className="absolute bottom-0 left-0 w-[400px] md:w-[550px] object-cover"
+            className="absolute bottom-0 left-0 w-2xl md:w-[600px] object-cover"
           />
           <img
             src="/WildcardAsset/Ribbon.png"
             alt="25T2 Wildcard Title"
-            className="absolute bottom-0 right-1/2 md:right-1/3 hidden md:block md:w-48 min-w-14 object-cover"
+            className="absolute bottom-0 right-1/2 w-60 md:right-1/3 md:w-48 min-w-14 object-cover"
           />
         </div>
       </div>
@@ -57,7 +57,7 @@ export default function WildCard25T2() {
       <img
         src="/WildcardAsset/DiceStamp.png"
         alt="25T2 Wildcard"
-        className="absolute bottom-1/8 sm:top-1/3 -left-20 w-3xs md:w-[300px] md:left-1/6 min-w-14 object-cover"
+        className="absolute top-1/3 -left-20 w-3xs md:w-[300px] md:left-1/6 min-w-14 object-cover"
       />
       <img
         src="/WildcardAsset/RedDice.png"
