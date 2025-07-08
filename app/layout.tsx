@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Handjet } from "next/font/google";
+import { Geist, Geist_Mono, Handjet, IM_Fell_English_SC} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -11,6 +11,11 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+const imfellEng = IM_Fell_English_SC({
+  variable: "--font-imfell-eng",
+  weight:"400",
   subsets: ["latin"],
 });
 
@@ -32,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} antialiased`}
       >
         <NavBar />
         <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">

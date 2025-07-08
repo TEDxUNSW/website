@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 import Title from "../components/Title";
+import Event from "../components/Event";
 import VideoComponents from "@/components/VideoComponents";
 
 // https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
@@ -88,8 +89,8 @@ export default function Home() {
 
   return (
     <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
-      <div className="flex flex-col items-center justify-items-center min-h-screen  gap-16 sm: font-[family-name:var(--font-handjet)] text-5xl">
-        In Plain Sight
+      <div className="flex flex-col items-center justify-items-center min-h-screen text-5xl">
+        <Event />
         {/* mission&&talks recommendation session */}
         <div className="flex flex-1 bg-[url('/BlackBackground.png')]  bg-repeat bg-contain w-screen h-screen ">
           <div className="p-8 px-12 flex-col flex items-start justify-between text-white gap-5 h-96 w-full font-[family-name:var(--font-geist-mono)] font-bold md:pr-52 md:px-20">
