@@ -1,14 +1,14 @@
-import Logo from "../public/logo-black-svg.svg"
-import Hamburg from "../public/hamburg.svg"
-import Facebook from "../public/facebook.svg"
-import Instagram from "../public/instagram.svg"
-import Link from "next/link"
+import Logo from "../public/logo-black-svg.svg";
+import Hamburg from "../public/hamburg.svg";
+import Facebook from "../public/facebook.svg";
+import Instagram from "../public/instagram.svg";
+import Link from "next/link";
 
 export default function NavBar({}) {
   return (
     <header>
       <div className="flex flex-row items-center bg-white text-black h-15">
-        <Link href = "/">
+        <Link href="/">
           <Logo className="shrink-0 grow-0" width={180} />
         </Link>
         <div className="max-[42rem]:flex-20 min-[42rem]:flex-1 min-[43rem]:flex-2 min-[47rem]:flex-3 md:flex-4 lg:flex-5"></div>
@@ -52,5 +52,5 @@ export default function NavBar({}) {
         </div>
       </div>
     </header>
-  )
+  );
 }

@@ -7,11 +7,13 @@
     "pnpm": ">=10"
   },
   "scripts": {
+    "prepare": "husky",
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write 'app/**/*.{js,ts,jsx,tsx,json,md,mdx,css,scss}' 'components/**/*.{js,ts,jsx,tsx,json,md,mdx,css,scss}'",
     "preview": "opennextjs-cloudflare && wrangler dev",
     "deploy": "opennextjs-cloudflare && wrangler deploy",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
@@ -37,6 +39,9 @@
     "eslint": "9.31.0",
     "eslint-config-next": "15.3.5",
     "eslint-config-prettier": "10.1.5",
+    "eslint-plugin-prettier": "5.5.1",
+    "husky": "9.1.7",
+    "prettier": "3.6.2",
     "tailwindcss": "4.1.11",
     "typescript": "5.8.3",
     "webpack": "5.100.1",

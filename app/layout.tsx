@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Handjet, IM_Fell_English_SC} from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Handjet,
+  IM_Fell_English_SC,
+} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
@@ -15,7 +20,7 @@ const geistMono = Geist_Mono({
 });
 const imfellEng = IM_Fell_English_SC({
   variable: "--font-imfell-eng",
-  weight:"400",
+  weight: "400",
   subsets: ["latin"],
 });
 
