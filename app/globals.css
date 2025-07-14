@@ -6,13 +6,19 @@
   --color-red: #EB0028;
   --color-black: #1e1e1e;
   --color-white: #fff;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-imfellEng: var(--font-imfell-eng);
+  --font-handjet: var(--font-handjet);
 }
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-imfellEng: var(--font-imfell-eng);
   --font-handjet: var(--font-handjet);
   --color-proper-red: #EB0028;
 
