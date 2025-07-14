@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "3.3.1",
-    "@opennextjs/cloudflare": "0.6.6",
+    "@opennextjs/cloudflare": "1.5.1",
     "@svgr/webpack": "8.1.0",
     "@tailwindcss/postcss": "4.1.11",
     "@types/node": "22.15.35",
