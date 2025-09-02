@@ -42,13 +42,13 @@ export default function VideoBlock({ src, titleImg, title }: src) {
         onClose={() => setIsOpen(false)}
         className="relative z-50"
       >
-        <div className="fixed inset-0 flex w-full items-center justify-center">
+        <div className="fixed inset-0 flex w-screen items-center justify-center">
           <DialogPanel
-            className="w-full h-full border bg-black/90 p-12"
+            className="w-full h-full border content-center bg-black/90 p-12"
             onClick={() => setIsOpen(false)}
           >
-            <div className="flex w-screen h-screen justify-center justify-self-center">
-              <iframe src={src} className="h-4/5 w-4/5" allow="autoplay" />
+            <div className="flex justify-center">
+              <iframe src={src} id="dialogue" allow="autoplay" />
             </div>
           </DialogPanel>
         </div>

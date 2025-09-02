@@ -39,3 +39,82 @@ button:hover {
   cursor: pointer;
   background-color: #4a4949;
 }
+
+@media (width >= 60rem) {
+  #dialogue {
+    height:90lvh;
+  }
+}
+@media (width >= 50rem) and (width <= 60rem) {
+  #dialogue {
+    height:40lvh; 
+  }
+}
+@media (width >= 40rem) and (width <= 50rem) {
+  #dialogue {
+    height:40lvh; 
+ 
+  }
+}@media (width >= 30rem) and (width <= 40rem) {
+  #dialogue {
+    height:40lvh; 
+
+  }
+}
+@media (width >= 20rem) and (width <= 30rem) {
+  #dialogue {
+    height:25lvh; 
+ 
+  }
+}
+@media (width >= 10rem) and (width <= 20rem) {
+  #dialogue {
+    height:20lvh; 
+
+  }
+}
+@media (width >= 5rem) and (width <= 10rem) {
+  #dialogue {
+    height:15lvh; 
+
+  }
+}
+@media (height >= 60rem) {
+  #dialogue {
+    width:95lvw;
+  }
+}
+@media (height >= 50rem) and (height <= 60rem) {
+  #dialogue {
+    width:80lvw; 
+  }
+}
+@media (height >= 40rem) and (height <= 50rem) {
+  #dialogue {
+    width:90lvw; 
+ 
+  }
+}@media (height >= 30rem) and (height <= 40rem) {
+  #dialogue {
+    width:70lvw; 
+
+  }
+}
+@media (height >= 20rem) and (height <= 30rem) {
+  #dialogue {
+    width:50lvw; 
+ 
+  }
+}
+@media (height >= 10rem) and (height <= 20rem) {
+  #dialogue {
+    width:40lvw; 
+
+  }
+}
+@media (height >= 5rem) and (height <= 10rem) {
+  #dialogue {
+    width:30lvh; 
+
+  }
+}
