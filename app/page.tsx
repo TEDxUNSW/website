@@ -118,11 +118,7 @@ export default function Home() {
               />
               {/* this is where talks are recommended */}
               <div>
-                <VideoComponents
-                  start={0}
-                  end={imageEndPoints}
-                  srcs={srcs}
-                />
+                <VideoComponents start={0} end={imageEndPoints} srcs={srcs} />
               </div>
             </div>
           </div>

@@ -2,8 +2,6 @@ import VideoBlock, { src } from "./VideoBlock";
 
 type videoComponentObject = { start: number; end: number; srcs: src[] };
 
-
-
 export default function VideoComponents({
   start,
   end,
