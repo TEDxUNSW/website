@@ -35,14 +35,14 @@ export default function VideoBlock({ src, titleImg, title }: src) {
           </div>
         </div>
       </button>
-      <div className="w-20 max-[100rem]:w-10  max-[80rem]:w-5" />
+      <div className="w-10 max-[100rem]:w-10 max-[80rem]:w-5" />
 
       <Dialog
         open={isOpen}
         onClose={() => setIsOpen(false)}
         className="relative z-50"
       >
-        <div className="fixed inset-0 flex w-screen items-center justify-center">
+        <div className="fixed inset-0 flex w-full items-center justify-center">
           <DialogPanel
             className="w-full h-full border content-center bg-black/90 p-12"
             onClick={() => setIsOpen(false)}
