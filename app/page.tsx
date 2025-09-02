@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Title from "../components/Title";
 import Event from "../components/Event";
 import VideoComponents from "@/components/VideoComponents";
+import TiltedCard from "@/components/SpeakerCards";
 
 // https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
 function getWindowDimensions() {
@@ -74,6 +75,39 @@ const srcs = [
   },
 ];
 
+const speakers = [
+  {
+    src: "/image.png",
+    altText: "Blank",
+    speakerName: "Speaker 1",
+    captionText: "Speaker 1",
+  },
+  {
+    src: "/image.png",
+    altText: "Blank",
+    speakerName: "Speaker 2",
+    captionText: "Speaker 2",
+  },
+  {
+    src: "/image.png",
+    altText: "Blank",
+    speakerName: "Speaker 3",
+    captionText: "Speaker 3",
+  },
+  {
+    src: "/image.png",
+    altText: "Blank",
+    speakerName: "Speaker 4",
+    captionText: "Speaker 4",
+  },
+  {
+    src: "/image.png",
+    altText: "Blank",
+    speakerName: "Speaker 5",
+    captionText: "Speaker 5",
+  },
+];
+
 export default function Home() {
   const width: number | undefined = useWindowDimensions()?.width;
 
@@ -93,7 +127,24 @@ export default function Home() {
         <Event />
         {/* mission&&talks recommendation session */}
         <div className="flex flex-1 bg-[url('/BlackBackground.png')] bg-repeat bg-contain w-full">
-          <div className="p-8 px-12 flex-col flex items-start justify-start text-white gap-5 w-full font-[family-name:var(--font-geist-mono)] font-bold md:pr-52 md:px-20">
+          <div className="p-4 flex-col flex items-start justify-start text-white gap-5 w-full font-[family-name:var(--font-geist-mono)] font-bold">
+            <div className="grid grid-flex-row grid-cols-5 gap-5 p-10 px-10 bg-white bg-repeat bg-contain w-full">
+              {speakers.slice(0, 5).map((speakers) => {
+                return (
+                  <TiltedCard
+                    key={speakers.captionText}
+                    imageSrc={speakers.src}
+                    altText={speakers.altText}
+                    captionText={speakers.captionText}
+                    overlayContent={
+                      <p className="tilted-card-demo-text">
+                        {speakers.speakerName}
+                      </p>
+                    }
+                  />
+                );
+              })}
+            </div>
             <div className="flex gap-5 flex-col sm:flex-row md:gap-20">
               <Title
                 titleLg="Mission"
