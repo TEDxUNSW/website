@@ -35,7 +35,7 @@ export default function VideoBlock({ src, titleImg, title }: src) {
           </div>
         </div>
       </button>
-      <div className="w-10 max-[100rem]:w-10 max-[80rem]:w-5" />
+      <div className="w-15 max-[100rem]:w-10 max-[80rem]:w-5" />
 
       <Dialog
         open={isOpen}
