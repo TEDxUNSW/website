@@ -9,7 +9,7 @@ export default function VideoComponents({
 }: videoComponentObject) {
   return (
     <>
-      <div className="flex justify-between w-max">
+      <div className="grid grid-flow-col grid-rows-3 lg:grid-rows-2 gap-7">
         {srcs.slice(start, end).map((src) => {
           return (
             <VideoBlock

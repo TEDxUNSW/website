@@ -77,23 +77,23 @@ const srcs = [
 export default function Home() {
   const width: number | undefined = useWindowDimensions()?.width;
 
-  let imageEndPoints = 3;
+  let imageEndPoints = 10;
 
   if (typeof width !== "undefined") {
-    if (width < 500) {
-      imageEndPoints = 1;
+    if (width < 550) {
+      imageEndPoints = 3;
     } else if (width < 900) {
-      imageEndPoints = 2;
+      imageEndPoints = 6;
     }
   }
 
   return (
     <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
-      <div className="flex flex-col items-center justify-items-center min-h-screen text-5xl">
+      <div className="flex flex-col items-center justify-items-center min-h-screen text-5xl w-full">
         <Event />
         {/* mission&&talks recommendation session */}
-        <div className="flex flex-1 bg-[url('/BlackBackground.png')]  bg-repeat bg-contain w-screen h-screen ">
-          <div className="p-8 px-12 flex-col flex items-start justify-between text-white gap-5 h-96 w-full font-[family-name:var(--font-geist-mono)] font-bold md:pr-52 md:px-20">
+        <div className="flex flex-1 bg-[url('/BlackBackground.png')] bg-repeat bg-contain w-full">
+          <div className="p-8 px-12 flex-col flex items-start justify-start text-white gap-5 w-full font-[family-name:var(--font-geist-mono)] font-bold md:pr-52 md:px-20">
             <div className="flex gap-5 flex-col sm:flex-row md:gap-20">
               <Title
                 titleLg="Mission"
@@ -118,21 +118,7 @@ export default function Home() {
               />
               {/* this is where talks are recommended */}
               <div>
-                <VideoComponents
-                  start={0}
-                  end={imageEndPoints * 1}
-                  srcs={srcs}
-                />
-                <VideoComponents
-                  start={imageEndPoints * 1}
-                  end={imageEndPoints * 2}
-                  srcs={srcs}
-                />
-                <VideoComponents
-                  start={imageEndPoints * 2}
-                  end={imageEndPoints * 3}
-                  srcs={srcs}
-                />
+                <VideoComponents start={0} end={imageEndPoints} srcs={srcs} />
               </div>
             </div>
           </div>
