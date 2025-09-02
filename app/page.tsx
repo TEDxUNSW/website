@@ -77,13 +77,13 @@ const srcs = [
 export default function Home() {
   const width: number | undefined = useWindowDimensions()?.width;
 
-  let imageEndPoints = 3;
+  let imageEndPoints = 10;
 
   if (typeof width !== "undefined") {
-    if (width < 500) {
-      imageEndPoints = 1;
+    if (width < 550) {
+      imageEndPoints = 3;
     } else if (width < 900) {
-      imageEndPoints = 2;
+      imageEndPoints = 6;
     }
   }
 
@@ -120,17 +120,7 @@ export default function Home() {
               <div>
                 <VideoComponents
                   start={0}
-                  end={imageEndPoints * 1}
-                  srcs={srcs}
-                />
-                <VideoComponents
-                  start={imageEndPoints * 1}
-                  end={imageEndPoints * 2}
-                  srcs={srcs}
-                />
-                <VideoComponents
-                  start={imageEndPoints * 2}
-                  end={imageEndPoints * 3}
+                  end={imageEndPoints}
                   srcs={srcs}
                 />
               </div>
