@@ -9,25 +9,33 @@ export default function OffTheRecord25T3() {
       }}
     >
       <div className="text-[#ffd144]">
-        <div>
-          <div>
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-row items-center space-x-3">
             <div
-              className="text-[12rem] font-tnr-condensed"
+              className="text-[18rem] font-tnr-condensed mb-[-4.5rem]"
               style={{
                 fontWeight: "bold",
               }}
             >
               OFF
             </div>
-            <div className="text-[6rem] font-tnr-condensed">THE RECORD</div>
+            <div className="w-[21rem] text-[1.3rem] flex flex-col justify-center">
+              <p className="font-tnr-condensed font-bold">
+                we celebrate conversations that have slipped through the cracks;
+                voices unheard, tales untold, unsung heroes and lovers in the
+                shadows. we champion ideas that never made it into the
+                spotlight, stories lost to time, and the characters hiding in
+                the margins.
+              </p>
+            </div>
           </div>
-          <div>
-            <p className="font-tnr-condensed">
-              we celebrate conversations that have slipped through the cracks;
-              voices unheard, tales untold, unsung heroes and lovers in the
-              shadows. we champion ideas that never made it into the spotlight,
-              stories lost to time, and the characters hiding in the margins.
-            </p>
+          <div
+            className="text-[7rem] font-tnr-condensed mt-[0.4rem]"
+            style={{
+              transform: "scaleY(1.5)",
+            }}
+          >
+            THE RECORD
           </div>
         </div>
       </div>
