@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 :root {
   --background: #ffffff;
   --foreground: #1e1e1e;
@@ -10,7 +11,9 @@
   --font-mono: var(--font-geist-mono);
   --font-imfellEng: var(--font-imfell-eng);
   --font-handjet: var(--font-handjet);
+  --font-imfellEng: var(--font-imfell-eng);
 }
+
 
 @theme inline {
   --color-background: var(--background);

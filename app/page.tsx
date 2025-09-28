@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import Title from "../components/Title";
 import Event from "../components/Event";
 import VideoComponents from "@/components/VideoComponents";
-import TiltedCard from "@/components/SpeakerCards";
+import SpeakerCardBlocks from "@/components/SpeakerCardBlocks";
 
 // https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
 function getWindowDimensions() {
@@ -77,34 +77,71 @@ const srcs = [
 
 const speakers = [
   {
-    src: "/image.png",
-    altText: "Blank",
-    speakerName: "Speaker 1",
-    captionText: "Speaker 1",
+    src: "",
+    altText: "Coming Soon",
+    speakerName: "Speaker",
+    captionText: "Speaker",
   },
   {
-    src: "/image.png",
-    altText: "Blank",
-    speakerName: "Speaker 2",
-    captionText: "Speaker 2",
+    src: "",
+    altText: "Coming Soon",
+    speakerName: "Speaker",
+    captionText: "Speaker",
   },
   {
-    src: "/image.png",
-    altText: "Blank",
-    speakerName: "Speaker 3",
-    captionText: "Speaker 3",
+    src: "",
+    altText: "Coming Soon",
+    speakerName: "Speaker",
+    captionText: "Speaker",
   },
   {
-    src: "/image.png",
-    altText: "Blank",
-    speakerName: "Speaker 4",
-    captionText: "Speaker 4",
+    src: "/speakerCards/Joe Kwon.jpg",
+    altText: "Joe Kwon",
+    speakerName: "Joe Kwon",
+    captionText: "CEO at Confit Pathways",
   },
   {
-    src: "/image.png",
-    altText: "Blank",
-    speakerName: "Speaker 5",
-    captionText: "Speaker 5",
+    src: "/speakerCards/Adam Mada.jpg",
+    altText: "Adam Mada",
+    speakerName: "Adam Mada",
+    captionText: "Entertainer and Magician",
+  },
+  {
+    src: "/speakerCards/Rachael Bolton.jpg",
+    altText: "Rachael Bolton",
+    speakerName: "Rachael Bolton",
+    captionText: "Journalist at AFR",
+  },
+  {
+    src: "/speakerCards/Aaron Eger.jpg",
+    altText: "Aaron Eger",
+    speakerName: "Aaron Eger",
+    captionText: "Marine Biologist",
+  },
+  {
+    src: "/speakerCards/Dr Kate Brady.jpg",
+    altText: "Dr Kate Brady",
+    speakerName: "Dr Kate Brady",
+    captionText:
+      "Senior Research Fellow " + "for the How We Survive Initiative UNSW",
+  },
+  {
+    src: "/speakerCards/James Tran.jpg",
+    altText: "James Tran",
+    speakerName: "James Tran",
+    captionText: "Sydney Based Photographer",
+  },
+  {
+    src: "/speakerCards/Lenny Vartanian.jpg",
+    altText: "Lenny Vartanian",
+    speakerName: "Lenny Vartanian",
+    captionText: "Professor in the School of Pyschology at UNSW",
+  },
+  {
+    src: "/speakerCards/Sasha Vassar.jpg",
+    altText: "Sasha Vassar",
+    speakerName: "Sasha Vassar",
+    captionText: "Senior Lecturer in Computer Science and Engineering at UNSW",
   },
 ];
 
@@ -127,23 +164,26 @@ export default function Home() {
         <Event />
         {/* mission&&talks recommendation session */}
         <div className="flex flex-1 bg-[url('/BlackBackground.png')] bg-repeat bg-contain w-full">
-          <div className="p-4 flex-col flex items-start justify-start text-white gap-5 w-full font-[family-name:var(--font-geist-mono)] font-bold">
-            <div className="grid grid-flex-row grid-cols-5 gap-5 p-10 px-10 bg-white bg-repeat bg-contain w-full">
-              {speakers.slice(0, 5).map((speakers) => {
-                return (
-                  <TiltedCard
-                    key={speakers.captionText}
-                    imageSrc={speakers.src}
-                    altText={speakers.altText}
-                    captionText={speakers.captionText}
-                    overlayContent={
-                      <p className="tilted-card-demo-text">
-                        {speakers.speakerName}
-                      </p>
-                    }
-                  />
-                );
-              })}
+          <div className="p-4 flex-col flex items-start justify-start text-white gap-5 font-[family-name:var(--font-geist-mono)] font-bold w-full">
+            <div className="flex flex-row flex-nowrap bg-repeat bg-contain overflow-x-scroll overflow-y-hidden w-full bg-white">
+              <SpeakerCardBlocks
+                index_start={0}
+                index_end={3}
+                speakers={speakers}
+                theme={"Off The Record"}
+              />
+              <SpeakerCardBlocks
+                index_start={3}
+                index_end={7}
+                speakers={speakers}
+                theme={"WILDCARD"}
+              />
+              <SpeakerCardBlocks
+                index_start={7}
+                index_end={11}
+                speakers={speakers}
+                theme={"In Plain Sight"}
+              />
             </div>
             <div className="flex gap-5 flex-col sm:flex-row md:gap-20">
               <Title
