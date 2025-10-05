@@ -1,0 +1,97 @@
+.footer {
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background: rgb(226, 72, 67);
+}
+
+.footer-content {
+  position: relative;
+  z-index: 10;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.footer-signup-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: black;
+  font-weight: bold;
+  align-items: center;
+}
+
+.footer-signup-input-row {
+  display: flex;
+}
+
+.footer-signup-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.footer-signup-input-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer-input {
+  color: black;
+  font-size: 1.875rem;
+}
+
+.footer-submit {
+  background: black;
+  color: white;
+  border-radius: 2.25rem;
+  padding: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.footer-bottom {
+  color: black;
+}
+
+.footer-divider {
+  margin: 1rem auto;
+  border-top: 1px solid black;
+}
+
+.footer-bottom-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  width: 20rem;
+  margin-left: -1.5rem;
+}
+
+@media (max-width: 596px) {
+  .footer-signup-row {
+    flex-direction: column;
+  }
+
+  .footer-signup-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .footer-input {
+    color: black;
+    font-size: 1.3rem;
+  }
+
+  .footer-submit {
+    background: black;
+    color: white;
+    border-radius: 2.25rem;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+  }
+}
