@@ -77,22 +77,37 @@ const srcs = [
 
 const speakers = [
   {
-    src: "",
-    altText: "Coming Soon",
-    speakerName: "Speaker",
-    captionText: "Speaker",
+    src: "/speakerCards/Ryan Jack Nicholas.jpg",
+    altText: "Ryan Jack Nicholas",
+    speakerName: "Ryan Jack Nicholas",
+    captionText: "Music Psychology and Neurodiversity Researcher",
   },
   {
-    src: "",
-    altText: "Coming Soon",
-    speakerName: "Speaker",
-    captionText: "Speaker",
+    src: "/speakerCards/Dr Jake Renzella.jpg",
+    altText: "Dr Jake Renzella",
+    speakerName: "Dr Jake Renzella",
+    captionText:
+      "Senior Lecturer in the School" +
+      "of Computer Science and Engineering at UNSW",
   },
   {
-    src: "",
-    altText: "Coming Soon",
-    speakerName: "Speaker",
-    captionText: "Speaker",
+    src: "/speakerCards/Dr Anastasia Hronis.jpg",
+    altText: "Dr Anastasia Hronis",
+    speakerName: "Dr Anastasia Hronis",
+    captionText: "Clinical Psychologist and Author",
+  },
+  {
+    src: "/speakerCards/Dr Marianne Jauncey.jpg",
+    altText: "Dr Marianne Jauncey",
+    speakerName: "Dr Marianne Jauncey",
+    captionText:
+      "Medical Director at Sydney " + "Medically Supervised Injecting Centre",
+  },
+  {
+    src: "/speakerCards/Henry Brodaty.jpg",
+    altText: "Henry Brodaty",
+    speakerName: "Henry Brodaty",
+    captionText: "Senior Psychiatrist & Psychogeriatrician",
   },
   {
     src: "/speakerCards/Joe Kwon.jpg",
@@ -164,25 +179,29 @@ export default function Home() {
         <Event />
         {/* mission&&talks recommendation session */}
         <div className="flex flex-1 bg-[url('/BlackBackground.png')] bg-repeat bg-contain w-full">
-          <div className="p-4 flex-col flex items-start justify-start text-white gap-5 font-[family-name:var(--font-geist-mono)] font-bold w-full">
-            <div className="flex flex-row flex-nowrap bg-repeat bg-contain overflow-x-scroll overflow-y-hidden w-full bg-white">
+          <div className="p-4 flex-col flex items-start justify-start gap-5 font-[family-name:var(--font-geist-mono)] font-bold w-full text-3xl">
+            <div className="flex flex-row flex-nowrap bg-repeat bg-contain overflow-x-scroll no-scrollbar overflow-y-hidden w-full h-90 gap-10">
+              <Title titleLg="Speaker Cards" color="white" />
               <SpeakerCardBlocks
                 index_start={0}
-                index_end={3}
+                index_end={5}
                 speakers={speakers}
                 theme={"Off The Record"}
+                colour_and_font={"text-[var(--color-gold)]"}
               />
               <SpeakerCardBlocks
-                index_start={3}
-                index_end={7}
+                index_start={5}
+                index_end={9}
                 speakers={speakers}
                 theme={"WILDCARD"}
+                colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
               />
               <SpeakerCardBlocks
-                index_start={7}
-                index_end={11}
+                index_start={9}
+                index_end={13}
                 speakers={speakers}
                 theme={"In Plain Sight"}
+                colour_and_font={"font-handjet"}
               />
             </div>
             <div className="flex gap-5 flex-col sm:flex-row md:gap-20">

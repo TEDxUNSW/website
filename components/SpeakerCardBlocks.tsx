@@ -13,6 +13,7 @@ type speakerComponents = {
     captionText: string;
   }[];
   theme: string;
+  colour_and_font?: string;
 };
 
 export default function SpeakerCardBlocks({
@@ -20,11 +21,13 @@ export default function SpeakerCardBlocks({
   index_end,
   speakers,
   theme,
+  colour_and_font,
 }: speakerComponents) {
+  colour_and_font = colour_and_font;
   return (
-    <div className="text-black">
+    <div className={colour_and_font}>
       {theme}
-      <div className="flex flex-row gap-5 p-10 bg-contain text-end">
+      <div className="flex flex-row gap-10 p-40 bg-contain text-end text-white">
         {speakers.slice(index_start, index_end).map((speakers) => {
           return (
             <TiltedCard

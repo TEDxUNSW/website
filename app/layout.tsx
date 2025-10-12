@@ -5,11 +5,18 @@ import {
   Handjet,
   IM_Fell_English_SC,
   Crimson_Pro,
+  Source_Serif_4,
 } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+
+const sourceSerif4 = Source_Serif_4({
+  variable: "--font-source-serif-4",
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -79,7 +86,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} antialiased`}
       >
         <NavBar />
         <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
