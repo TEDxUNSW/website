@@ -49,39 +49,68 @@ button:hover {
   background-color: #4a4949;
 }
 
-@media (width >= 60rem) {
+@media (width >= 65rem) {
   #dialogue {
     height: 90lvh;
+  }
+  #vidcomp{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (width >= 60rem) and (width <= 65rem) {
+  #dialogue {
+    height: 90lvh;
+  }
+  #vidcomp{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (width >= 50rem) and (width <= 60rem) {
   #dialogue {
     height: 40lvh;
   }
+  #vidcomp{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (width >= 40rem) and (width <= 50rem) {
   #dialogue {
     height: 40lvh;
+  }
+  #vidcomp{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 @media (width >= 30rem) and (width <= 40rem) {
   #dialogue {
     height: 40lvh;
   }
+  #vidcomp{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 @media (width >= 20rem) and (width <= 30rem) {
   #dialogue {
     height: 25lvh;
+  }
+  #vidcomp{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 @media (width >= 10rem) and (width <= 20rem) {
   #dialogue {
     height: 20lvh;
   }
+  #vidcomp{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 @media (width >= 5rem) and (width <= 10rem) {
   #dialogue {
     height: 15lvh;
+  }
+  #vidcomp{
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
 @media (height >= 60rem) {
