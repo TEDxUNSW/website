@@ -16,13 +16,23 @@ export default function OffTheRecord25T3() {
             priority
           />
         </div>
-        <Link
-          href="https://tedxunsw.eventbrite.com.au/?aff=wb"
-          className="w-40 md:w-60 rounded-2xl bg-[#fdd144] text-black flex font-serif font-thin-condensed items-center justify-center text-base lg:text-lg p-2 hover:underline hover:bg-amber-300 hover:transition-all-0.3s ease-in-out hover:scale-105"
-          aria-label="Get tickets now"
-        >
-          Get Tickets Now →
-        </Link>
+        <div className="relative">
+          <div className="pointer-events-none
+                      absolute 
+                      rounded-2xl
+                      border border-[#fdd144]
+                      bg-none opacity-80
+                      animate-ping
+                      w-full h-full"
+          ></div>
+          <Link
+            href="https://tedxunsw.eventbrite.com.au/?aff=wb"
+            className="w-40 md:w-60 rounded-2xl bg-[#fdd144] text-black flex font-serif font-thin-condensed items-center justify-center text-base lg:text-lg p-2 hover:underline hover:bg-amber-300 hover:transition-all-0.3s ease-in-out hover:scale-105"
+            aria-label="Get tickets now"
+          >
+            Get Tickets Now →
+          </Link>
+        </div>
         <div className="relative w-[200px] h-[100px] md:w-[400px] md:h-[200px] ">
           <Image
             src="/25T3OffTheRecordAssets/VinylPlayer.png"
