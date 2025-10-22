@@ -17,7 +17,7 @@ export default function OffTheRecord25T3() {
           />
         </div>
         <div className="relative">
-          <div className="pointer-events-none absolute rounded-2xl border border-[#fdd144] bg-none opacity-80 animate-ping w-full h-full"></div>
+          <div className="z-20 pointer-events-none absolute rounded-2xl bg-[#fdd144]/20 opacity-90 animate-ping w-full h-full"></div>
           <Link
             href="https://tedxunsw.eventbrite.com.au/?aff=wb"
             className="w-40 md:w-60 rounded-2xl bg-[#fdd144] text-black flex font-serif font-thin-condensed items-center justify-center text-base lg:text-lg p-2 hover:underline hover:bg-amber-300 hover:transition-all-0.3s ease-in-out hover:scale-105"
