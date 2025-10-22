@@ -27,7 +27,7 @@ export default function SpeakerCardBlocks({
   return (
     <div className={colour_and_font}>
       {theme}
-      <div className="flex flex-row gap-10 p-40 bg-contain text-end text-white">
+      <div className="flex flex-row gap-10 p-5 bg-contain text-end text-white">
         {speakers.slice(index_start, index_end).map((speakers) => {
           return (
             <TiltedCard
