@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tailwindcss/preflight";
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
@@ -6,11 +8,14 @@
   --color-red: #eb0028;
   --color-black: #1e1e1e;
   --color-white: #fff;
+  --color-gold: #ffd144; 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-imfellEng: var(--font-imfell-eng);
   --font-handjet: var(--font-handjet);
+  --font-sourceSerif4: var(--font-source-serif-4);
 }
+
 
 @theme inline {
   --color-background: var(--background);
@@ -22,6 +27,7 @@
   --font-crimsonPro: var(--font-crimson-pro);
   --font-brixton: var(--font-brixton);
   --font-tnr-condensed: var(--font-tnr-condensed);
+  --font-sourceSerif4: var(--font-source-serif-4);
   --color-proper-red: #eb0028;
 }
 
@@ -111,5 +117,15 @@ button:hover {
 @media (height >= 5rem) and (height <= 10rem) {
   #dialogue {
     width: 30lvh;
+  }
+}
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .no-scrollbar {
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
   }
 }

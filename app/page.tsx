@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Title from "../components/Title";
 import Event from "../components/Event";
 import VideoComponents from "@/components/VideoComponents";
+import SpeakerCardBlocks from "@/components/SpeakerCardBlocks";
 
 // https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
 function getWindowDimensions() {
@@ -74,6 +75,97 @@ const srcs = [
   },
 ];
 
+const speakers = [
+  {
+    src: "/speakerCards/Ryan Jack Nicholas.jpg",
+    altText: "Ryan Jack Nicholas",
+    speakerName: "Ryan Jack Nicholas",
+    captionText: "Music Psychology and Neurodiversity Researcher",
+  },
+  {
+    src: "/speakerCards/Dr Jake Renzella.jpg",
+    altText: "Dr Jake Renzella",
+    speakerName: "Dr Jake Renzella",
+    captionText:
+      "Senior Lecturer in the School" +
+      "of Computer Science and Engineering at UNSW",
+  },
+  {
+    src: "/speakerCards/Dr Anastasia Hronis.jpg",
+    altText: "Dr Anastasia Hronis",
+    speakerName: "Dr Anastasia Hronis",
+    captionText: "Clinical Psychologist and Author",
+  },
+  {
+    src: "/speakerCards/Dr Marianne Jauncey.jpg",
+    altText: "Dr Marianne Jauncey",
+    speakerName: "Dr Marianne Jauncey",
+    captionText:
+      "Medical Director at Sydney " + "Medically Supervised Injecting Centre",
+  },
+  {
+    src: "/speakerCards/Henry Brodaty.jpg",
+    altText: "Henry Brodaty",
+    speakerName: "Henry Brodaty",
+    captionText: "Senior Psychiatrist & Psychogeriatrician",
+  },
+  {
+    src: "/speakerCards/Christine Ai (Cai).jpg",
+    altText: "Christine Ai (Cai)",
+    speakerName: "Christine Ai (Cai)",
+    captionText: "Illustrator and Creative Entrepreneur",
+  },
+  {
+    src: "/speakerCards/Joe Kwon.jpg",
+    altText: "Joe Kwon",
+    speakerName: "Joe Kwon",
+    captionText: "CEO at Confit Pathways",
+  },
+  {
+    src: "/speakerCards/Adam Mada.jpg",
+    altText: "Adam Mada",
+    speakerName: "Adam Mada",
+    captionText: "Entertainer and Magician",
+  },
+  {
+    src: "/speakerCards/Rachael Bolton.jpg",
+    altText: "Rachael Bolton",
+    speakerName: "Rachael Bolton",
+    captionText: "Journalist at AFR",
+  },
+  {
+    src: "/speakerCards/Aaron Eger.jpg",
+    altText: "Aaron Eger",
+    speakerName: "Aaron Eger",
+    captionText: "Marine Biologist",
+  },
+  {
+    src: "/speakerCards/Dr Kate Brady.jpg",
+    altText: "Dr Kate Brady",
+    speakerName: "Dr Kate Brady",
+    captionText:
+      "Senior Research Fellow " + "for the How We Survive Initiative UNSW",
+  },
+  {
+    src: "/speakerCards/James Tran.jpg",
+    altText: "James Tran",
+    speakerName: "James Tran",
+    captionText: "Sydney Based Photographer",
+  },
+  {
+    src: "/speakerCards/Lenny Vartanian.jpg",
+    altText: "Lenny Vartanian",
+    speakerName: "Lenny Vartanian",
+    captionText: "Professor in the School of Pyschology at UNSW",
+  },
+  {
+    src: "/speakerCards/Sasha Vassar.jpg",
+    altText: "Sasha Vassar",
+    speakerName: "Sasha Vassar",
+    captionText: "Senior Lecturer in Computer Science and Engineering at UNSW",
+  },
+];
+
 export default function Home() {
   const width: number | undefined = useWindowDimensions()?.width;
 
@@ -93,7 +185,31 @@ export default function Home() {
         <Event />
         {/* mission&&talks recommendation session */}
         <div className="flex flex-1 bg-[url('/BlackBackground.png')] bg-repeat bg-contain w-full">
-          <div className="p-8 px-12 flex-col flex items-start justify-start text-white gap-5 w-full font-[family-name:var(--font-geist-mono)] font-bold md:pr-52 md:px-20">
+          <div className="p-4 flex-col flex items-start justify-start gap-5 font-[family-name:var(--font-geist-mono)] font-bold w-full text-3xl">
+            <div className="flex flex-row flex-nowrap bg-repeat bg-contain overflow-x-scroll no-scrollbar overflow-y-hidden w-full h-90 gap-10">
+              <Title titleLg="Speakers" color="white" />
+              <SpeakerCardBlocks
+                index_start={0}
+                index_end={6}
+                speakers={speakers}
+                theme={"Off The Record"}
+                colour_and_font={"text-[var(--color-gold)]"}
+              />
+              <SpeakerCardBlocks
+                index_start={6}
+                index_end={10}
+                speakers={speakers}
+                theme={"WILDCARD"}
+                colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
+              />
+              <SpeakerCardBlocks
+                index_start={10}
+                index_end={14}
+                speakers={speakers}
+                theme={"In Plain Sight"}
+                colour_and_font={"font-handjet"}
+              />
+            </div>
             <div className="flex gap-5 flex-col sm:flex-row md:gap-20">
               <Title
                 titleLg="Mission"
