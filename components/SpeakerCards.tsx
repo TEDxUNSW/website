@@ -6,8 +6,8 @@ import "./speakerCards.css";
 
 const springValues = {
   damping: 30,
-  stiffness: 100,
-  mass: 2,
+  stiffness: 500,
+  mass: 5,
 };
 
 interface TiltedCardProps {
@@ -74,7 +74,7 @@ export default function TiltedCard({
     y.set(e.clientY - rect.top);
 
     const velocityY = offsetY - lastY;
-    rotateFigcaption.set(-velocityY * 0.6);
+    rotateFigcaption.set(-velocityY * 0.7);
     setLastY(offsetY);
   }
 

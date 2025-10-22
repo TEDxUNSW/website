@@ -110,6 +110,12 @@ const speakers = [
     captionText: "Senior Psychiatrist & Psychogeriatrician",
   },
   {
+    src: "/speakerCards/Christine Ai (Cai).jpg",
+    altText: "Christine Ai (Cai)",
+    speakerName: "Christine Ai (Cai)",
+    captionText: "Illustrator and Creative Entrepreneur",
+  },
+  {
     src: "/speakerCards/Joe Kwon.jpg",
     altText: "Joe Kwon",
     speakerName: "Joe Kwon",
@@ -184,21 +190,21 @@ export default function Home() {
               <Title titleLg="Speaker Cards" color="white" />
               <SpeakerCardBlocks
                 index_start={0}
-                index_end={5}
+                index_end={6}
                 speakers={speakers}
                 theme={"Off The Record"}
                 colour_and_font={"text-[var(--color-gold)]"}
               />
               <SpeakerCardBlocks
-                index_start={5}
-                index_end={9}
+                index_start={6}
+                index_end={10}
                 speakers={speakers}
                 theme={"WILDCARD"}
                 colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
               />
               <SpeakerCardBlocks
-                index_start={9}
-                index_end={13}
+                index_start={10}
+                index_end={14}
                 speakers={speakers}
                 theme={"In Plain Sight"}
                 colour_and_font={"font-handjet"}
