@@ -49,8 +49,25 @@ const brixton = LocalFont({
   display: "swap",
 });
 
+const tnrCondensed = LocalFont({
+  src: [
+    {
+      path: "../public/fonts/TimesNewRomanCondensed-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/TimesNewRomanCondensed-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-tnr-condensed",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "TEDxUNSW offcial Website",
+  title: "TEDxUNSW Official Website",
   description: "TEDxUNSW brings together the passionate minds",
 };
 
@@ -62,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} antialiased`}
       >
         <NavBar />
         <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">

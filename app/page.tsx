@@ -102,11 +102,9 @@ export default function Home() {
                 route="/about"
               />
               <p className="text-sm font-light">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore
+                To create a platform for changemakers of our community share
+                ideas, with the aim of sparking conversations and igniting
+                passion outside of the classroom.
               </p>
             </div>
             <div className="flex flex-col gap-10 md:gap-20 sm:flex-row">
