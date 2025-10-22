@@ -187,7 +187,7 @@ export default function Home() {
         <div className="flex flex-1 bg-[url('/BlackBackground.png')] bg-repeat bg-contain w-full">
           <div className="p-4 flex-col flex items-start justify-start gap-5 font-[family-name:var(--font-geist-mono)] font-bold w-full text-3xl">
             <div className="flex flex-row flex-nowrap bg-repeat bg-contain overflow-x-scroll no-scrollbar overflow-y-hidden w-full h-90 gap-10">
-              <Title titleLg="Speaker Cards" color="white" />
+              <Title titleLg="Speakers" color="white" />
               <SpeakerCardBlocks
                 index_start={0}
                 index_end={6}
