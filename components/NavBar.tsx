@@ -46,7 +46,7 @@ export default function NavBar({}) {
         </div>
 
         <div style={{ visibility: isOpen? 'visible' : 'hidden' }} 
-          className="flex flex-col absolute right-0 bg-background h-screen w-40  justify-center items-center font-helvetica text-1xl font-bold">
+          className="flex flex-col absolute right-0 bg-foreground text-background h-screen w-40  justify-center items-center font-helvetica text-1xl font-bold">
           <Link href="/events" className="flex-none p-5">
             Events
           </Link>
@@ -61,6 +61,10 @@ export default function NavBar({}) {
 
           <Link href="/participate" className="flex-none p-5">
             Participate
+          </Link>
+
+          <Link href="/prevEvents" className="flex-none p-5">
+            Previous Events
           </Link>
 
           <Link href="/tickets" className="flex-none p-5">
