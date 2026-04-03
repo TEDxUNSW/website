@@ -6,7 +6,7 @@ import Logo from "../public/logos/logo-no-color.svg";
 import "@/styles/footer.css";
 
 const WEBHOOK_URL =
-  process.env.NEXT_PUBLIC_WEBHOOK_URL ?? "https://tedxunsw.com.au/nowhere";
+  process.env.NEXT_PUBLIC_WEBHOOK_URL ?? "https://tedxunsw.com/nowhere";
 
 export default function Footer() {
   const [email, setEmail] = useState<string>("");
