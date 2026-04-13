@@ -18,12 +18,20 @@ export default function AboutPage() {
       imageRight: true,
       imageSrc: "/HONK3.jpg",
       imageSrc2: "/HONK4.jpg",
-      imageSrc3: "/HONK5.jpg"
+      imageSrc3: "/HONK5.jpg",
     },
   ];
 
   return (
-    <div style={{ fontFamily: "Georgia, serif", maxWidth: 900, margin: "0 auto", padding: "40px 24px", whiteSpace: "pre-line" }}>
+    <div
+      style={{
+        fontFamily: "Georgia, serif",
+        maxWidth: 900,
+        margin: "0 auto",
+        padding: "40px 24px",
+        whiteSpace: "pre-line",
+      }}
+    >
       {sections.map((s, i) => (
         <div
           key={i}
@@ -36,10 +44,19 @@ export default function AboutPage() {
           }}
         >
           <div style={{ flex: 1 }}>
-            <h2 style={{ color: "var(--color-red)", marginBottom: 12 }}>{s.tag}</h2>
+            <h2 style={{ color: "var(--color-red)", marginBottom: 12 }}>
+              {s.tag}
+            </h2>
             <p style={{ lineHeight: 1.8, color: "white" }}>{s.body}</p>
           </div>
-          <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 16 }}>
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              gap: 16,
+            }}
+          >
             <img src={s.imageSrc} alt="TEDxUNSW" style={{ width: "100%" }} />
             {s.imageSrc2 && (
               <img src={s.imageSrc2} alt="TEDxUNSW" style={{ width: "100%" }} />
