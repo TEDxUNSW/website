@@ -63,10 +63,6 @@ export default function NavBar({}) {
             Participate
           </Link>
 
-          <Link href="/prevEvents" className="flex-none p-5">
-            Previous Events
-          </Link>
-
           <Link href="/tickets" className="flex-none p-5">
             Tickets
           </Link>
