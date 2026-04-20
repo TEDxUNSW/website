@@ -43,7 +43,7 @@ export default function VideosPage() {
           </p>
           <h1 className="text-4xl font-bold md:text-6xl">Video Gallery</h1>
           <p className="mt-4 max-w-2xl text-base text-white/70 md:text-lg">
-            Work in Progress..... 
+            Work in Progress.....
           </p>
         </div>
 

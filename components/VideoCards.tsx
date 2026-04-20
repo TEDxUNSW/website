@@ -12,14 +12,10 @@ export type VideoItem = {
 
 type VideoCardProps = VideoItem;
 
-export default function VideoCard({
-  src,
-  titleImg,
-  title,
-}: VideoCardProps) {
+export default function VideoCard({ src, titleImg, title }: VideoCardProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [transform, setTransform] = useState(
-    "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)"
+    "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)",
   );
 
   const srcImg = "/videoComponentImages/" + titleImg;
@@ -36,7 +32,7 @@ export default function VideoCard({
     const rotateX = ((centerY - y) / centerY) * 8;
 
     setTransform(
-      `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`
+      `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`,
     );
   }
 
