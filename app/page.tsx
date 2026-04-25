@@ -235,6 +235,12 @@ export default function Home() {
                 <VideoComponents start={0} end={imageEndPoints} srcs={srcs} />
               </div>
             </div>
+            <Title
+              titleLg="Contact Us"
+              titleSm="More"
+              color="white"
+              route="/contactUs"
+            />
           </div>
         </div>
       </div>
