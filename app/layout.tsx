@@ -9,8 +9,9 @@ import {
 } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/nav/NavBar";
 import Footer from "@/components/Footer";
+import MobileNavbar from "@/components/nav/mobileNavBar";
 
 const sourceSerif4 = Source_Serif_4({
   variable: "--font-source-serif-4",
@@ -88,7 +89,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} antialiased`}
       >
-        <NavBar />
+        <div className="hidden md:block">
+          <NavBar/>
+        </div>
+        
+        <div className="block md:hidden">
+          <MobileNavbar/>
+        </div>
+
         <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
           {children}
           <Footer />
