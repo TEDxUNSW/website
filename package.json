@@ -30,6 +30,7 @@
     "postprocessing": "6.37.7",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-favicon": "^2.0.7",
     "three": "0.179.1",
     "validator": "13.15.15"
   },
@@ -54,7 +55,7 @@
     "webpack": "5.100.1",
     "wrangler": "4.24.3"
   },
-  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad",
+  "packageManager": "pnpm@10.34.1+sha512.b58fbde6dca66a929538021581f648b4570b6ca19b18e7cbd7f2c07a7b24454155388dacdf08f2af3678e88a6d1fe04f9d609df24bf51735a060ea041b374ab7",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@tailwindcss/oxide",

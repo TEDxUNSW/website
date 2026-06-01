@@ -1,50 +1,26 @@
 export interface EventCard {
-    slug:string;
-    title: string;
-    year: number;
-    description: string;
-    bgImage: string;
+    src:string;
+    altText: string;
+    eventName: string;
+    url: string
 }
 
 export const events: EventCard[] = [
 {
-    slug: "Wave Length",
-    title: "events 26T2",
-    year: 2026,
-    description: "events for 26T1",
-    bgImage: ""
+    src: "/speakerCards/Ryan Jack Nicholas.jpg",
+    altText: "Wave Length Logo",
+    eventName: "Wave Length",
+    url: "/events/WaveLength"
 },
 {
-    slug: "26T1",
-    title: "events 26T1",
-    year: 2026,
-    description: "events for 26T1",
-    bgImage: ""
+    src: "/speakerCe",
+    altText: "Off The Record Logo", 
+    eventName: "Off The Record", 
+    url: "/events/OffTheRecord"
 }, 
 {
-    slug: "OffTheRecord", 
-    title: "Off The Record", 
-    year: 2025,
-    description: "events for 25T3",
-    bgImage: ""
-}, 
-{
-    slug: "WildCard", 
-    title: "WildCard", 
-    year: 2025,
-    description: "events for 25T2",
-    bgImage: ""
+    src: "/speakerCe",
+    altText: "Wild Card Logo",
+    eventName: "Wild Card", 
+    url: "/events/WildCard"
 }]
-
-export const groupedEvents = Object.entries(
-  events.reduce<Record<number, EventCard[]>>((acc, item) => {
-    if (!acc[item.year]) acc[item.year] = [];
-    acc[item.year].push(item);
-    return acc;
-  }, {})
-)
-.sort((a, b) => Number(b[0]) - Number(a[0]))
-.map(([year, items]) => ({
-    year: Number(year),
-    items,
-}));

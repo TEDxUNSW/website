@@ -1,12 +1,14 @@
-import { Metadata } from "next";
+import { Metadata } from "next"
 
-export const metadata:Metadata= {
+export const metadata:Metadata = {
     title: "Wild Card | TEDxUNSW", 
-    description: "Everything about Wild Card"
+    description: "Events page for Wild Card"
 }
 
-export default function WildCard() {
+export default function WildCard () {
     return (
-        <div></div>
+        <div>
+            <p>Hello from Wild Card</p>
+        </div>
     )
 }
