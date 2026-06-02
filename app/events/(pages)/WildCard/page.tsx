@@ -1,3 +1,4 @@
+import Upcoming from "@/components/Upcoming"
 import { Metadata } from "next"
 
 export const metadata:Metadata = {
@@ -8,7 +9,7 @@ export const metadata:Metadata = {
 export default function WildCard () {
     return (
         <div>
-            <p>Hello from Wild Card</p>
+            <Upcoming/>
         </div>
     )
 }

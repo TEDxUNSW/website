@@ -26,7 +26,7 @@ interface TiltedCardProps {
   displayOverlayContent?: boolean;
 }
 
-export default function TiltedCard({
+export default function xTiltedCard({
   imageSrc,
   altText = "Tilted card image",
   captionText = "",

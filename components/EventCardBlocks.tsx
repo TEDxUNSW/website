@@ -27,19 +27,20 @@ export default function EventCardBlocks({
   colour_and_font = colour_and_font;
   return (
     <div className={colour_and_font}>
-      {year}
-      <div className="flex flex-row gap-10 p-5 bg-contain text-end text-white">
+      <p className="text-xl font-bold">{year}</p>
+      <div className="flex grid grid-cols-3 pb-[15vh] bg-contain text-end text-white">
         {events.slice(index_start, index_end).map((events) => {
           return (
             <Link href={events.url}>
             <TiltedCard
               key={events.eventName}
+              containerHeight="40vh"
+              containerWidth="30vw"
+              imageHeight="54vh"
+              imageWidth="27vw"
               imageSrc={events.src}
               altText={events.altText}
-            //   captionText={speakers.captionText}
-              overlayContent={
-                <p className="tilted-card-demo-text">{events.eventName}</p>
-              }
+              scaleOnHover={1.05}
             />
             </Link>
           );
