@@ -5,31 +5,37 @@ const videos = [
     src: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     titleImg: "tedx1.jpg",
     title: "TEDxUNSW | Sample Talk One",
+    year: 2025,
   },
   {
     src: "https://www.youtube.com/embed/nNXSSfSmbao?si=mU_OUTecKDDSKSRb",
     titleImg: "tedx2.jpg",
     title: "TEDxUNSW | Sample Talk Two",
+    year: 2025,
   },
   {
     src: "https://www.youtube.com/embed/jNQXAC9IVRw",
     titleImg: "tedx3.jpg",
     title: "TEDxUNSW | Sample Talk Three",
+    year: 2023,
   },
   {
     src: "https://www.youtube.com/embed/nky4me4NP70?si=mb3psKOrncNUFE1n",
     titleImg: "tedx4.jpg",
     title: "TEDxUNSW | Sample Talk Four",
+    year: 2024,
   },
   {
     src: "https://www.youtube.com/embed/X47OO8rT9wc?si=fcNyXPHYXZ0BaJU6",
     titleImg: "tedx5.jpg",
     title: "TEDxUNSW | Sample Talk Five",
+    year: 2024,
   },
   {
     src: "https://www.youtube.com/embed/JuSsvM8B4Jc?si=1pIvD38vrq5VA8Ia",
     titleImg: "tedx6.jpg",
     title: "TEDxUNSW | Sample Talk Six",
+    year: 2023,
   },
 ];
 
@@ -43,7 +49,7 @@ export default function VideosPage() {
           </p>
           <h1 className="text-4xl font-bold md:text-6xl">Video Gallery</h1>
           <p className="mt-4 max-w-2xl text-base text-white/70 md:text-lg">
-            Work in Progress.....
+            Explore talks, moments, and ideas from TEDxUNSW across the years.
           </p>
         </div>
 

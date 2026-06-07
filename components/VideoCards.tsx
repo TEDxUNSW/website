@@ -8,6 +8,7 @@ export type VideoItem = {
   src: string;
   titleImg: string;
   title: string;
+  year: number;
 };
 
 type VideoCardProps = VideoItem;
