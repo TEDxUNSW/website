@@ -6,7 +6,7 @@ export default function OffTheRecord25T3() {
     <div className="flex flex-col items-center justify-center w-full h-[640px] md:h-screen bg-[#0d0a03]">
       <div className="flex flex-col items-center w-full md:gap-2">
         {/* Give the fill image a sized, positioned wrapper */}
-        <div className="relative w-5/6 md:w-2/3 h-[220px] md:h-[360px] lg:h-[440px] -ml-2 p-2">
+        <div className="relative w-5/6 md:w-2/3 h-[220px] md:h-[360px] lg:h-[440px] -ml-2">
           <Image
             src="/25T3OffTheRecordAssets/EventThemeTitle.png"
             alt="25T3 Off The Record"
