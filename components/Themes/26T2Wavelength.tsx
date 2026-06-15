@@ -234,7 +234,7 @@ export default function Wavelength26T2() {
           Location: UNSW Roundhouse
         </p>
         <a
-          href="https://youtube.com/watch?v=dQw4w9WgXcQ"
+          href="https://tedxunsw.eventbrite.com.au/?aff=wb"
           className="group mr-1 sm:mr-2 inline-flex items-center rounded-full border border-[#fffbe8]/70 font-semibold uppercase text-[#fffbe8] backdrop-blur-[2px] transition-all duration-300 hover:bg-[#fffbe8] hover:text-black hover:shadow-[0_0_30px_#fffbe899]"
           style={{
             fontFamily: "var(--font-montserrat)",
