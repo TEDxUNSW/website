@@ -6,6 +6,7 @@ import {
   IM_Fell_English_SC,
   Crimson_Pro,
   Source_Serif_4,
+  Montserrat,
 } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
@@ -73,6 +74,35 @@ const tnrCondensed = LocalFont({
   display: "swap",
 });
 
+const amoresa = LocalFont({
+  src: [
+    {
+      path: "../public/fonts/Amoresa-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-amoresa",
+  display: "swap",
+});
+
+const perandory = LocalFont({
+  src: [
+    {
+      path: "../public/fonts/Perandory-SemiCondensed.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-perandory",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "TEDxUNSW Official Website",
   description: "TEDxUNSW brings together the passionate minds",
@@ -86,7 +116,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} ${amoresa.variable} ${perandory.variable} ${montserrat.variable} antialiased`}
       >
         <NavBar />
         <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
