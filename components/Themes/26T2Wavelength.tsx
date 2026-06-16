@@ -235,6 +235,8 @@ export default function Wavelength26T2() {
         </p>
         <a
           href="https://tedxunsw.eventbrite.com.au/?aff=wb"
+          rel="noopener" // Didn't use noreferrer so we get stats
+          target="_blank"
           className="group mr-1 sm:mr-2 inline-flex items-center rounded-full border border-[#fffbe8]/70 font-semibold uppercase text-[#fffbe8] backdrop-blur-[2px] transition-all duration-300 hover:bg-[#fffbe8] hover:text-black hover:shadow-[0_0_30px_#fffbe899]"
           style={{
             fontFamily: "var(--font-montserrat)",
