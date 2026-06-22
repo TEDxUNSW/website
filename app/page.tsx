@@ -99,6 +99,12 @@ const srcs = [
 
 const speakers = [
   {
+    src: "/speakerCards/Kaea Pearce.jpg",
+    altText: "Kaea Pearce",
+    speakerName: "Kaea Pearce",
+    captionText: "Dancer, Choreographer and Creative Director",
+  },
+  {
     src: "/speakerCards/Ryan Jack Nicholas.jpg",
     altText: "Ryan Jack Nicholas",
     speakerName: "Ryan Jack Nicholas",
@@ -212,21 +218,28 @@ export default function Home() {
               <Title titleLg="Speakers" color="white" />
               <SpeakerCardBlocks
                 index_start={0}
-                index_end={6}
+                index_end={3}
+                speakers={speakers}
+                theme={"Wavelength"}
+                colour_and_font={"text-[var(--color-gold)]"}
+              />
+              <SpeakerCardBlocks
+                index_start={3}
+                index_end={9}
                 speakers={speakers}
                 theme={"Off The Record"}
                 colour_and_font={"text-[var(--color-gold)]"}
               />
               <SpeakerCardBlocks
-                index_start={6}
-                index_end={10}
+                index_start={9}
+                index_end={15}
                 speakers={speakers}
                 theme={"WILDCARD"}
                 colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
               />
               <SpeakerCardBlocks
-                index_start={10}
-                index_end={14}
+                index_start={13}
+                index_end={17}
                 speakers={speakers}
                 theme={"In Plain Sight"}
                 colour_and_font={"font-handjet"}
