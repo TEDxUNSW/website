@@ -114,8 +114,8 @@ const speakers = [
     src: "/speakerCards/Andrew Dempster.jpg",
     altText: "Andrew Dempster",
     speakerName: "Andrew Dempster",
-    captionText: 
-    "Director of the Australian Centre for Space Engineering Research at UNSW",
+    captionText:
+      "Director of the Australian Centre for Space Engineering Research at UNSW",
   },
   {
     src: "/speakerCards/Kaea Pearce.jpg",
