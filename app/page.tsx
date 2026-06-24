@@ -38,6 +38,28 @@ function useWindowDimensions() {
 
 const srcs = [
   {
+    src: "https://www.youtube.com/embed/7FpcfuqGLTw?autoplay=1",
+    titleImg: "RachaelBolton.jpg",
+    title:
+      "Resilience is holding you back — here’s why | Rachael Bolton | TEDxUNSW Salon",
+  },
+  {
+    src: "https://www.youtube.com/embed/AzTzqoheQDw?autoplay=1",
+    titleImg: "AaronEger.jpg",
+    title: "We Know Enough to Save Our Planet | Aaron Eger | TEDxUNSW Salon",
+  },
+  {
+    src: "https://www.youtube.com/embed/0LcSiEy-pic?autoplay=1",
+    titleImg: "AdamMada.jpg",
+    title: "Solving the Impossible | Adam Mada | TEDxUNSW Salon",
+  },
+  {
+    src: "https://www.youtube.com/embed/gJzjbODDxcY?autoplay=1",
+    titleImg: "JoeKwon.jpg",
+    title:
+      "Changing Our Perceptions Beyond the Headlines | Joe Kwon | TEDxUNSW Salon",
+  },
+  {
     src: "https://www.youtube.com/embed/abkWsmSdOVo?autoplay=1",
     titleImg: "LennyVartanian.png",
     title:
@@ -169,12 +191,12 @@ const speakers = [
 export default function Home() {
   const width: number | undefined = useWindowDimensions()?.width;
 
-  let imageEndPoints = 10;
+  let imageEndPoints = 9;
 
   if (typeof width !== "undefined") {
-    if (width < 550) {
+    if (width < 480) {
       imageEndPoints = 3;
-    } else if (width < 900) {
+    } else if (width < 1045) {
       imageEndPoints = 6;
     }
   }
