@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import "./Contact.css";
 
 export default function ContactUsPage() {
   return (
@@ -25,6 +26,8 @@ export default function ContactUsPage() {
                 If you are know someone who would be a good speaker for a future
                 TEDxUNSW events, send an email to us
                 <a
+                  rel="noopener noreferrer"
+                  target="_blank"
                   href="mailto:tedxunswcurations@gmail.com"
                   className="text-blue-500"
                 >
@@ -36,7 +39,6 @@ export default function ContactUsPage() {
                 onClick={() => {
                   navigator.clipboard.writeText("tedxunswcurations@gmail.com");
                 }}
-                id="a"
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
                 Copy Email
@@ -58,6 +60,8 @@ export default function ContactUsPage() {
               <p className="mb-5 md:max-lg:mt-2 sm:max-md:mt-0 sm:max-md:mb-0 mt-5 max-[350px]:hidden">
                 Looking to sponsor a TEDxUNSW event? Please email us
                 <a
+                  rel="noopener noreferrer"
+                  target="_blank"
                   href="mailto:tedxunswsponsorships@gmail.com"
                   className="text-blue-500"
                 >
@@ -71,7 +75,6 @@ export default function ContactUsPage() {
                     "tedxunswsponsorships@gmail.com",
                   );
                 }}
-                id="a"
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
                 Copy Email
@@ -94,6 +97,8 @@ export default function ContactUsPage() {
                 If you are a UNSW student society looking for an opportunity for
                 promotion of your club or society then you should contact us
                 <a
+                  rel="noopener noreferrer"
+                  target="_blank"
                   href="mailto:tedxunswsponsorships@gmail.com"
                   className="text-blue-500"
                 >
@@ -107,7 +112,6 @@ export default function ContactUsPage() {
                     "tedxunswsponsorships@gmail.com",
                   );
                 }}
-                id="a"
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
                 Copy Email
@@ -131,6 +135,8 @@ export default function ContactUsPage() {
                 for a TEDxUNSW event? Volunteer for our events. Please contact
                 us
                 <a
+                  rel="noopener noreferrer"
+                  target="_blank"
                   href="mailto:tedxunswcurations@gmail.com"
                   className="text-blue-500"
                 >
@@ -142,7 +148,6 @@ export default function ContactUsPage() {
                 onClick={() => {
                   navigator.clipboard.writeText("tedxunswcurations@gmail.com");
                 }}
-                id="a"
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
                 Copy Email
@@ -165,7 +170,12 @@ export default function ContactUsPage() {
                 Applications are not currently open, please check back at the
                 end of the year or if you have any questions about the
                 application process email
-                <a href="mailto:tedxunsw@gmail.com" className="text-blue-500">
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="mailto:tedxunsw@gmail.com"
+                  className="text-blue-500"
+                >
                   &nbsp;here
                 </a>
                 .
@@ -174,7 +184,6 @@ export default function ContactUsPage() {
                 onClick={() => {
                   navigator.clipboard.writeText("tedxunsw@gmail.com");
                 }}
-                id="a"
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
                 Copy Email
@@ -195,7 +204,6 @@ export default function ContactUsPage() {
                 onClick={() => {
                   navigator.clipboard.writeText("tedxunsw@gmail.com");
                 }}
-                id="a"
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-18 left-0"
               >
                 tedxunswsponsorships@gmail.com
@@ -204,7 +212,6 @@ export default function ContactUsPage() {
                 onClick={() => {
                   navigator.clipboard.writeText("tedxunsw@gmail.com");
                 }}
-                id="a"
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-34 left-0"
               >
                 tedxunsw@gmail.com
@@ -215,7 +222,6 @@ export default function ContactUsPage() {
                     "tedxunswsponsorships@gmail.com",
                   );
                 }}
-                id="a"
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
                 tedxunswcurations@gmail.com
