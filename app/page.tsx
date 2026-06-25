@@ -227,7 +227,7 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
+    <div className="bg-[url('/BlackBackground.png')] text-[var(--color-white)] bg-repeat bg-contain">
       <div className="flex flex-col items-center justify-items-center min-h-screen text-5xl w-full">
         <Event />
         {/* mission&&talks recommendation session */}
@@ -240,7 +240,7 @@ export default function Home() {
                 index_end={4}
                 speakers={speakers}
                 theme={"Wavelengths"}
-                colour_and_font={"font-perandory"}
+                colour_and_font={"text-[var(--color-white)] font-perandory"}
               />
               <SpeakerCardBlocks
                 index_start={4}
