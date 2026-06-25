@@ -17,6 +17,11 @@ export default function NavBar({}) {
               <p>About</p>
             </div>
           </Link>
+          <Link href="/contactUs" className="flex-0 pt-5 pb-5 pl-3 z-10">
+            <div className="font-helvetica text-[18px] font-bold ">
+              <p className="w-30">Contact Us</p>
+            </div>
+          </Link>
         </div>
         <div className="flex items-center gap-4">
           <a
