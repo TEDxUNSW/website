@@ -4,7 +4,7 @@ import EventCardBlocks from "@/components/EventCardBlocks";
 
 export default function Events() {
     return (
-        <div className="pl-10 pr-10 pt-[2vh] place-items-stretch justify-between mb-[10vh]">
+        <div className="pl-10 pr-10 pt-[2vh] h-fit place-items-stretch justify-between">
             <EventCardBlocks
                 index_start={0}
                 index_end={1}
@@ -18,15 +18,15 @@ export default function Events() {
                 index_end={4}
                 events={events}
                 year={2025}
-                colour_and_font={"text-[vard(--colour-black)]"}
+                colour_and_font={"text-[var(--color-white)]"}
             />
-            <div/>
+            
             <EventCardBlocks
                 index_start={4}
                 index_end={7}
                 events={events}
                 year={2024}
-                colour_and_font={"text-[vard(--colour-black)]"}
+                colour_and_font={"text-[var(--color-white)]"}
             />
         </div>
     )

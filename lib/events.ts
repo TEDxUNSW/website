@@ -7,43 +7,37 @@ export interface EventCard {
 
 export const events: EventCard[] = [
 {
-    src: "/",
+    src: "/EeventsPageAssets/",
     altText: "Wave Length",
     eventName: "Wave Length",
     url: "/events/WaveLength"
 },
 {
-    src: "/",
+    src: "/EventsPageAssets/InPlainSight.png",
     altText: "In Plain Sight",
     eventName: "In Plain Sight", 
     url: "/events/InPlainSight"
 },
 {
-    src: "/WildCardAsset/WildCardEvent.png",
+    src: "/EventsPageAssets/WildCardEvent.png",
     altText: "Wild Card",
     eventName: "Wild Card", 
     url: "/events/WildCard"
 },
 {
-    src: "/25T3OffTheRecordAssets/OffTheRecordEvent.jpg",
+    src: "/EventsPageAssets/OffTheRecordEvent.jpg",
     altText: "Off The Record", 
     eventName: "Off The Record", 
     url: "/events/OffTheRecord"
 },
 {
-    src:"/",
-    altText: "Stories of Us", 
-    eventName: "Stories of Us", 
-    url: "/events/StoriesOfUs"
-},
-{
-    src:"/",
+    src:"/EventsPageAssets/CritsAngles.png",
     altText: "Critical Angles", 
     eventName: "Critical Angles", 
     url: "/events/CriticalAngles"
 }, 
 {
-    src:"/",
+    src:"/EventsPageAssets/",
     altText: "Red Threads", 
     eventName: "Red Threads", 
     url: "/events/RedThreads"

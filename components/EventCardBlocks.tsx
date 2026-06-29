@@ -28,16 +28,16 @@ export default function EventCardBlocks({
   return (
     <div className={colour_and_font}>
       <p className="text-xl font-bold">{year}</p>
-      <div className="flex grid grid-cols-3 pb-[15vh] bg-contain text-end text-white">
+      <div className="grid pb-[5vh] md:h-[50vh] grid-rows-3 md:grid-cols-3 bg-contain text-white">
         {events.slice(index_start, index_end).map((events) => {
           return (
             <Link href={events.url}>
             <TiltedCard
               key={events.eventName}
-              containerHeight="40vh"
-              containerWidth="30vw"
-              imageHeight="54vh"
-              imageWidth="27vw"
+              containerHeight="300px"
+              containerWidth="250px"
+              imageHeight="280px"
+              imageWidth="280px"
               imageSrc={events.src}
               altText={events.altText}
               scaleOnHover={1.05}

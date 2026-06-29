@@ -8,8 +8,8 @@ export const metadata:Metadata = {
 
 export default function WaveLength () {
     return (
-        <div>
+
             <Upcoming/>
-        </div>
+
     )
 }
