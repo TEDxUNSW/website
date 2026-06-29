@@ -1,9 +1,9 @@
 "use client";
-import Logo from "../../public/logos/logo-black-svg.svg";
-import Hamburg from "../../public/hamburg.svg";
-import Close from "../../public/closeHamburg.svg";
-import Facebook from "../../public/logos/facebook.svg";
-import Instagram from "../../public/logos/instagram.svg";
+import Logo from "@/public/logos/logo-black-svg.svg";
+import Hamburg from "@/public/hamburg.svg";
+import Close from "@/public/closeHamburg.svg";
+import Facebook from "@/public/logos/facebook.svg";
+import Instagram from "@/public/logos/instagram.svg";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -59,8 +59,8 @@ export default function NavBar({}) {
             Subscribe
           </Link>
 
-          <Link href="/participate" className="flex-none p-5">
-            Participate
+          <Link href="/contact" className="flex-none p-5">
+            Contact
           </Link>
 
           <Link href="/tickets" className="flex-none p-5">
