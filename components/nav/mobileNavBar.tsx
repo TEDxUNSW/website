@@ -59,8 +59,8 @@ export default function MobileNavBar({}) {
             Subscribe
           </Link>
 
-          <Link href="/participate" className="flex-none p-5">
-            Participate
+          <Link href="/contact-us" className="flex-none p-5">
+            Contact
           </Link>
 
           <Link href="/tickets" className="flex-none p-5">
