@@ -120,7 +120,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} ${amoresa.variable} ${perandory.variable} ${montserrat.variable} antialiased`}
       >
         <div className="block md:hidden">
-          <MobileNavBar/>
+          <MobileNavBar />
         </div>
         <div className="hidden md:block">
           <NavBar />
