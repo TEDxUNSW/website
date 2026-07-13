@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function AboutPage() {
   const sections = [
     {
@@ -59,15 +61,39 @@ export default function AboutPage() {
               gap: 20,
             }}
           >
-            <img src={s.imageSrc} alt="TEDxUNSW" style={{ width: "100%" }} />
+            <Image
+              src={s.imageSrc}
+              alt="TEDxUNSW"
+              width={1500}
+              height={1000}
+              style={{ width: "100%", height: "auto" }}
+            />
             {s.imageSrc2 && (
-              <img src={s.imageSrc2} alt="TEDxUNSW" style={{ width: "100%" }} />
+              <Image
+                src={s.imageSrc2}
+                alt="TEDxUNSW"
+                width={1500}
+                height={1000}
+                style={{ width: "100%", height: "auto" }}
+              />
             )}
             {s.imageSrc3 && (
-              <img src={s.imageSrc3} alt="TEDxUNSW" style={{ width: "100%" }} />
+              <Image
+                src={s.imageSrc3}
+                alt="TEDxUNSW"
+                width={1500}
+                height={1000}
+                style={{ width: "100%", height: "auto" }}
+              />
             )}
             {s.imageSrc4 && (
-              <img src={s.imageSrc4} alt="TEDxUNSW" style={{ width: "100%" }} />
+              <Image
+                src={s.imageSrc4}
+                alt="TEDxUNSW"
+                width={1500}
+                height={1000}
+                style={{ width: "100%", height: "auto" }}
+              />
             )}
           </div>
         </div>
