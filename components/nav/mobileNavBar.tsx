@@ -9,7 +9,9 @@ import { useState } from "react";
 
 export default function MobileNavBar({}) {
   const [isOpen, setIsOpen] = useState(false);
-  
+  function setOpen() {
+    setIsOpen(!isOpen);
+  }
   return (
     <header>
       <div>
@@ -38,7 +40,7 @@ export default function MobileNavBar({}) {
                 <Facebook className="shrink-0 grow-0" width={20} />
               </a>
 
-              <button onClick={() => setIsOpen(!isOpen)} className="hover-bg-transparent pl-1">
+              <button onClick={setOpen} className="hover-bg-transparent pl-1">
                 {isOpen ? <Close className="w-7 h-7"/> : <Hamburg className="shrink-0 grow-0" width={20}/> }
              </button>
             </div>
@@ -46,24 +48,24 @@ export default function MobileNavBar({}) {
         </div>
 
         <div style={{ visibility: isOpen? 'visible' : 'hidden' }} 
-          className="flex flex-col z-50 absolute right-0 bg-foreground text-background h-[82vh] w-40  justify-center items-center font-helvetica text-1xl font-bold">
-          <Link href="/events" className="flex-none p-5">
+          className="flex flex-col z-50 absolute right-0 bg-foreground text-background h-screen w-40 items-center font-helvetica text-1xl font-bold">
+          <Link href="/events" className="flex-none p-5" onClick={setOpen}>
             Events
           </Link>
 
-          <Link href="/about" className="flex-none p-5">
+          <Link href="/about" className="flex-none p-5" onClick={setOpen}>
             About
           </Link>
 
-          <Link href="/subscribe" className="flex-none p-5">
+          <Link href="/subscribe" className="flex-none p-5" onClick={setOpen}>
             Subscribe
           </Link>
 
-          <Link href="/contact-us" className="flex-none p-5">
+          <Link href="/contact-us" className="flex-none p-5" onClick={setOpen}>
             Contact
           </Link>
 
-          <Link href="/tickets" className="flex-none p-5">
+          <Link href="/tickets" className="flex-none p-5" onClick={setOpen}>
             Tickets
           </Link>
          </div>

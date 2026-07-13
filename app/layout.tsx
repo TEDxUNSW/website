@@ -119,10 +119,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} ${amoresa.variable} ${perandory.variable} ${montserrat.variable} antialiased`}
       >
-        <div className="block md:hidden">
+        <div className="sticky top-0 z-50 block min-[880px]:hidden">
           <MobileNavBar/>
         </div>
-        <div className="hidden md:block">
+        <div className="sticky top-0 z-50 hidden min-[880px]:block">
           <NavBar />
         </div>
         <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
