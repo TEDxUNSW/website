@@ -20,7 +20,7 @@ export default function MobileNavBar({}) {
             <Logo className="shrink-0 grow-0" width={150} />
           </Link>
 
-          <div className="max-[42rem]:flex-20 min-[42rem]:flex-1 min-[43rem]:flex-2 min-[47rem]:flex-3 md:flex-4 lg:flex-5"/>
+          <div className="max-[42rem]:flex-20 min-[42rem]:flex-1 min-[43rem]:flex-2 min-[47rem]:flex-3 md:flex-4 lg:flex-5" />
           <div className="flex flex-auto shrink-0 justify-between">
             <div className="flex flex-auto items-center font-helvetica text-2xl w-30 justify-end">
               <a
@@ -68,7 +68,7 @@ export default function MobileNavBar({}) {
           <Link href="/tickets" className="flex-none p-5" onClick={setOpen}>
             Tickets
           </Link>
-         </div>
+        </div>
       </div>
     </header>
   );
