@@ -7,12 +7,10 @@ type VideoGalleryProps = {
   videos: VideoItem[];
 };
 
-export default function VideoGallery({
-  videos,
-}: InteractiveVideoGalleryProps) {
+export default function VideoGallery({ videos }: VideoGalleryProps) {
   const years = useMemo(() => {
     return Array.from(new Set(videos.map((video) => video.year))).sort(
-      (a, b) => b - a
+      (a, b) => b - a,
     );
   }, [videos]);
 
