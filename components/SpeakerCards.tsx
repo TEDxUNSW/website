@@ -1,5 +1,5 @@
 // Code from reactbits tilted cards.
-"use client"
+"use client";
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
 import "./speakerCards.css";
@@ -26,7 +26,7 @@ interface TiltedCardProps {
   displayOverlayContent?: boolean;
 }
 
-export default function xTiltedCard({
+export default function TiltedCard({
   imageSrc,
   altText = "Tilted card image",
   captionText = "",

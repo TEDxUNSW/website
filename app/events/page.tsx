@@ -1,7 +1,5 @@
-import Upcoming from "@/components/Upcoming"
+import Upcoming from "@/components/Upcoming";
 
-export default function Events () {
-    return (
-        <Upcoming/>
-    )
+export default function Events() {
+  return <Upcoming />;
 }

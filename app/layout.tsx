@@ -7,6 +7,7 @@ import {
   Crimson_Pro,
   Source_Serif_4,
   Montserrat,
+  Inter,
 } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
@@ -15,7 +16,7 @@ import Footer from "@/components/Footer";
 import MobileNavbar from "@/components/nav/mobileNavBar";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 const sourceSerif4 = Source_Serif_4({
   variable: "--font-source-serif-4",
@@ -124,11 +125,11 @@ export default function RootLayout({
       >
         <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain z-[-2]">
           <div className="hidden z-3 md:block">
-            <NavBar/>
+            <NavBar />
           </div>
-          
+
           <div className="block z-3 md:hidden">
-            <MobileNavbar/>
+            <MobileNavbar />
           </div>
           {children}
           <Footer />
