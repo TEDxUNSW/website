@@ -293,7 +293,7 @@ export default function Home() {
               titleLg="Contact Us"
               titleSm="More"
               color="white"
-              route="/contactUs"
+              route="/contact-us"
             />
           </div>
         </div>

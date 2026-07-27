@@ -12,7 +12,6 @@ export default function NavBar({}) {
           <Link href="/">
             <Logo className="shrink-0 grow-0" width={180} />
           </Link>
-
           <div className="max-[42rem]:flex-20 min-[42rem]:flex-1 min-[43rem]:flex-2 min-[47rem]:flex-3 md:flex-4 lg:flex-5" />
           <div className="flex flex-auto shrink-0 justify-between">
             <div className="flex flex-auto items-center font-helvetica text-2xl w-30 justify-end">
@@ -28,8 +27,8 @@ export default function NavBar({}) {
                 Subscribe
               </Link>
 
-              <Link href="/participate" className="flex-none p-5 text-md">
-                Participate
+              <Link href="/contact-us" className="flex-none p-5 text-md">
+                Contact
               </Link>
 
               <Link href="/tickets" className="flex-none p-5 text-md">

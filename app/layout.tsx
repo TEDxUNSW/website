@@ -13,10 +13,7 @@ import LocalFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/nav/NavBar";
 import Footer from "@/components/Footer";
-import MobileNavbar from "@/components/nav/mobileNavBar";
-import { cn } from "@/lib/utils";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+import MobileNavBar from "@/components/nav/mobileNavBar";
 
 const sourceSerif4 = Source_Serif_4({
   variable: "--font-source-serif-4",
@@ -123,14 +120,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} ${amoresa.variable} ${perandory.variable} ${montserrat.variable} antialiased`}
       >
-        <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain z-[-2]">
-          <div className="hidden z-3 md:block">
-            <NavBar />
-          </div>
-
-          <div className="block z-3 md:hidden">
-            <MobileNavbar />
-          </div>
+        <div className="sticky top-0 z-50 block min-[880px]:hidden">
+          <MobileNavBar />
+        </div>
+        <div className="sticky top-0 z-50 hidden min-[880px]:block">
+          <NavBar />
+        </div>
+        <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
           {children}
           <Footer />
         </div>
