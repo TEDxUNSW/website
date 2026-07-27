@@ -7,7 +7,6 @@ import {
   Crimson_Pro,
   Source_Serif_4,
   Montserrat,
-  Inter,
 } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
@@ -116,7 +115,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", inter.variable)}>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} ${amoresa.variable} ${perandory.variable} ${montserrat.variable} antialiased`}
       >
