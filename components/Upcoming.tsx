@@ -11,13 +11,15 @@ export default function Upcoming() {
       <div className={`${centerStyle} z-10 w-full h-full`}>
         {/* the big card */}
         <div
-          className={`${centerStyle} bg-yellow-600 border-transparent rounded-2xl w-[35vw] h-[40vh] shadow-xl shadow-red-700`}
+          className={`${centerStyle} bg-yellow-600 border-transparent rounded-2xl 
+          w-[35vw] h-[40vh] shadow-xl shadow-red-700 max-[894px]:w-[20vw] max-[894px]:h-[35vh] max-[412px]:w-[45vw] max-[412px]:h-[20vh]`}
         >
           {/* smaller inner card */}
           <div
-            className={`${centerStyle} bg-stone-700 border-transparent rounded-2xl w-[32vw] h-[35vh]`}
+            className={`${centerStyle} bg-stone-700 border-transparent rounded-2xl 
+            w-[32vw] h-[35vh] max-[894px]:w-[18vw] max-[894px]:h-[30vh] max-[412px]:w-[40vw] max-[412px]:h-[15vh]`}
           >
-            <h1 className="text-3xl font-bold text-white">
+            <h1 className="text-3xl font-bold text-white max-[894px]:text-sm">
               Under construction
             </h1>
           </div>
