@@ -12,14 +12,14 @@ export default function Upcoming() {
         {/* the big card */}
         <div
           className={`${centerStyle} bg-yellow-600 border-transparent rounded-2xl 
-          w-[35vw] h-[40vh] shadow-xl shadow-red-700 max-[894px]:w-[20vw] max-[894px]:h-[35vh] max-[412px]:w-[45vw] max-[412px]:h-[20vh]`}
+          shadow-xl shadow-red-700 w-[35vw] h-[20vh] min-[712px]:w-[40vw] min-[712px]:h-[30vh] min-[894px]:w-[38vw] min-[894px]:h-[35vh]`}
         >
           {/* smaller inner card */}
           <div
             className={`${centerStyle} bg-stone-700 border-transparent rounded-2xl 
-            w-[32vw] h-[35vh] max-[894px]:w-[18vw] max-[894px]:h-[30vh] max-[412px]:w-[40vw] max-[412px]:h-[15vh]`}
+            min-[329px]:w-[30vw] min-[329px]:h-[15vh] min-[712px]:w-[30vw] min-[712px]:h-[25vh] min-[894px]:w-[35vw] min-[894px]:h-[30vh]`}
           >
-            <h1 className="text-3xl font-bold text-white max-[894px]:text-sm">
+            <h1 className="text-[10px] min-[330px]:text-md min-[712px]:text-lg min-[895px]:text-4xl font-bold text-white">
               Under construction
             </h1>
           </div>
