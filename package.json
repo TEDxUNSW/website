@@ -20,7 +20,7 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
   "dependencies": {
-    "@headlessui/react": "2.2.4",
+    "@headlessui/react": "2.2.10",
     "@react-three/fiber": "9.3.0",
     "@react-three/postprocessing": "3.0.4",
     "clsx": "2.1.1",
@@ -32,10 +32,10 @@
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "three": "0.179.1",
-    "validator": "13.15.15"
+    "validator": "13.15.35"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.3.1",
+    "@eslint/eslintrc": "3.3.7",
     "@opennextjs/cloudflare": "1.5.1",
     "@svgr/webpack": "8.1.0",
     "@tailwindcss/postcss": "4.1.11",
@@ -43,11 +43,11 @@
     "@types/react": "19.1.8",
     "@types/react-dom": "19.1.6",
     "@types/three": "0.179.0",
-    "@types/validator": "13.15.2",
+    "@types/validator": "13.15.10",
     "eslint": "9.31.0",
     "eslint-config-next": "15.3.5",
-    "eslint-config-prettier": "10.1.5",
-    "eslint-plugin-prettier": "5.5.1",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.6",
     "husky": "9.1.7",
     "prettier": "3.6.2",
     "tailwindcss": "4.1.11",
