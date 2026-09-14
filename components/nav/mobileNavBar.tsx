@@ -53,7 +53,7 @@ export default function MobileNavBar({}) {
 
         <div
           style={{ visibility: isOpen ? "visible" : "hidden" }}
-          className="flex flex-col z-50 absolute right-0 bg-foreground text-background h-screen w-40 items-center font-helvetica text-1xl font-bold"
+          className="flex flex-col z-50 absolute right-0 bg-white text-black h-screen w-40 items-center font-helvetica text-1xl font-bold"
         >
           <Link href="/events" className="flex-none p-5" onClick={setOpen}>
             Events
