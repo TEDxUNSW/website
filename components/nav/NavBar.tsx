@@ -1,7 +1,7 @@
 "use client";
-import Logo from "../../public/logos/logo-black-svg.svg";
-import Facebook from "../../public/logos/facebook.svg";
-import Instagram from "../../public/logos/instagram.svg";
+import Logo from "@/public/logos/logo-black-svg.svg";
+import Facebook from "@/public/logos/facebook.svg";
+import Instagram from "@/public/logos/instagram.svg";
 import Link from "next/link";
 
 export default function NavBar({}) {
