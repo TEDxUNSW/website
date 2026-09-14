@@ -5,10 +5,10 @@ const titleGlow = {
   textShadow: "0 0 12px #fffbe8, 0 0 30px #fffbe899, 0 0 60px #fffbe866",
 } as const;
 
-const locationGlow = {
-  color: "#fffdee",
-  textShadow: "0 0 8px #fffdee, 0 0 18px #fffdee99, 0 0 32px #fffdee55",
-} as const;
+// const locationGlow = {
+//   color: "#fffdee",
+//   textShadow: "0 0 8px #fffdee, 0 0 18px #fffdee99, 0 0 32px #fffdee55",
+// } as const;
 
 // Shared look for the free-floating taglines (same as the bottom-right tagline).
 const taglineStyle = {
@@ -222,7 +222,7 @@ export default function Wavelength26T2() {
             AVELENGTHS
           </span>
         </div>
-        <p
+        {/* <p
           className="font-bold tracking-[0.12em] uppercase mr-1 sm:mr-2"
           style={{
             fontFamily: "var(--font-montserrat)",
@@ -232,9 +232,10 @@ export default function Wavelength26T2() {
           }}
         >
           Location: UNSW Roundhouse
-        </p>
+        </p> */}
         <a
-          href="https://tedxunsw.eventbrite.com.au/?aff=wb"
+          // href="https://tedxunsw.eventbrite.com.au/?aff=wb"
+          href="https://www.youtube.com/playlist?list=PLTGzmz2iL7wM"
           rel="noopener" // Didn't use noreferrer so we get stats
           target="_blank"
           className="group mr-1 sm:mr-2 inline-flex items-center rounded-full border border-[#fffbe8]/70 font-semibold uppercase text-[#fffbe8] backdrop-blur-[2px] transition-all duration-300 hover:bg-[#fffbe8] hover:text-black hover:shadow-[0_0_30px_#fffbe899]"
@@ -250,7 +251,7 @@ export default function Wavelength26T2() {
             boxShadow: "0 0 1.2em #fffbe833",
           }}
         >
-          <span>Get Tickets</span>
+          <span>Watch Talks</span>
           <span
             aria-hidden
             className="transition-transform duration-300 group-hover:translate-x-1"
