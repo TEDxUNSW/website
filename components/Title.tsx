@@ -17,7 +17,7 @@ interface TitleProps {
 }
 
 export default function Title({ titleLg, titleSm, color, route }: TitleProps) {
-  const color_final = color?.toLowerCase() || "white";
+  const color_final = color?.toLowerCase() ?? "white";
   return (
     <div className=" p-2 flex flex-col justify-center items-start">
       <h1
@@ -29,17 +29,17 @@ export default function Title({ titleLg, titleSm, color, route }: TitleProps) {
         {titleLg}
       </h1>
       <div className="flex pl-[0.1rem] items-center justify-center">
-        <h5 className="text-[var(--color-red)] text-sm">
+        <h5 className="text-(--color-red) text-sm">
           {route ? (
             <Link className="group" href={route}>
               {titleSm}
-              <div className="relative left-0 bottom-0 h-[2px] w-full bg-[var(--color-red)] transform scale-x-0 transition-transform duration-300 ease-out origin-center group-hover:scale-x-100" />
+              <div className="relative left-0 bottom-0 h-0.5 w-full bg-(--color-red) transform scale-x-0 transition-transform duration-300 ease-out origin-center group-hover:scale-x-100" />
             </Link>
           ) : (
             titleSm
           )}
         </h5>
-        <span className="text-[var(--color-red)] text-sm">
+        <span className="text-(--color-red) text-sm">
           <ArrowRight width={14} />
         </span>
       </div>

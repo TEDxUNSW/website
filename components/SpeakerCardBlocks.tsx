@@ -3,7 +3,7 @@
 import "./speakerCards.css";
 import TiltedCard from "./SpeakerCards";
 
-type speakerComponents = {
+interface speakerComponents {
   index_start: number;
   index_end: number;
   speakers: {
@@ -14,7 +14,7 @@ type speakerComponents = {
   }[];
   theme: string;
   colour_and_font?: string;
-};
+}
 
 export default function SpeakerCardBlocks({
   index_start,
@@ -23,7 +23,6 @@ export default function SpeakerCardBlocks({
   theme,
   colour_and_font,
 }: speakerComponents) {
-  colour_and_font = colour_and_font;
   return (
     <div className={colour_and_font}>
       {theme}
