@@ -7,30 +7,35 @@ import Event from "../components/Event";
 import VideoComponents from "@/components/VideoComponents";
 import SpeakerCardBlocks from "@/components/SpeakerCardBlocks";
 
+interface WindowDimensions {
+  width: number;
+  height: number;
+}
+
 // https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
-function getWindowDimensions() {
-  if (typeof window !== "undefined") {
-    const { innerWidth: width, innerHeight: height } = window;
-    return {
-      width,
-      height,
-    };
-  }
+function getWindowDimensions(): WindowDimensions {
+  // Only works in the browser (only call this in a useEffect)
+  return {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
 }
 
 function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(
-    getWindowDimensions(),
-  );
+  // Don't call getWindowDimensions() in the initial state, because it will break server-side rendering
+  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>();
 
   useEffect(() => {
     function handleResize() {
       setWindowDimensions(getWindowDimensions());
     }
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }
+
+    handleResize(); // Call it once to set the initial dimensions
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return windowDimensions;

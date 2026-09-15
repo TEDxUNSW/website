@@ -7,7 +7,7 @@ import Instagram from "@/public/logos/instagram.svg";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function MobileNavBar({}) {
+export default function MobileNavBar() {
   const [isOpen, setIsOpen] = useState(false);
   function setOpen() {
     setIsOpen(!isOpen);

@@ -4,7 +4,7 @@ import Facebook from "../../public/logos/facebook.svg";
 import Instagram from "../../public/logos/instagram.svg";
 import Link from "next/link";
 
-export default function NavBar({}) {
+export default function NavBar() {
   return (
     <header>
       <div>
