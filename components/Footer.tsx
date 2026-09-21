@@ -18,7 +18,7 @@ export default function Footer() {
     }
     setEmail("");
 
-    fetch(WEBHOOK_URL, {
+    await fetch(WEBHOOK_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,11 +42,13 @@ export default function Footer() {
               placeholder="Your email address"
               className="footer-input"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
             <button
               className="footer-submit"
-              onClick={() => sendEmailToWebhook(email)}
+              onClick={() => void sendEmailToWebhook(email)}
             >
               Submit
             </button>

@@ -1,15 +1,25 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import type { NextConfig } from "next";
-import type { RuleSetRule } from "webpack";
+import type { Configuration, RuleSetCondition, RuleSetRule } from "webpack";
 
 const nextConfig: NextConfig = {
-  webpack(config) {
+  webpack(config: Configuration) {
     // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find(
-      (rule: RuleSetRule) =>
-        rule.test instanceof RegExp && rule.test?.test?.(".svg")
-    );
+    const fileLoaderRule = config.module!.rules!.find(
+      (rule): rule is RuleSetRule =>
+        typeof rule === "object" &&
+        rule !== null &&
+        rule.test instanceof RegExp &&
+        rule.test.test(".svg"),
+    )!;
 
-    config.module.rules.push(
+    // Hack because resourceQuery may have different shapes, but we know Next's SVG rule
+    // has a { not: RuleSetCondition[] } shape.
+    const excludedQueries = (
+      fileLoaderRule.resourceQuery as { not: RuleSetCondition[] }
+    ).not;
+
+    config.module!.rules!.push(
       // Reapply the existing rule, but only for svg imports ending in ?url
       {
         ...fileLoaderRule,
@@ -20,9 +30,9 @@ const nextConfig: NextConfig = {
       {
         test: /\.svg$/i,
         issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+        resourceQuery: { not: [...excludedQueries, /url/] }, // exclude if *.svg?url
         use: ["@svgr/webpack"],
-      }
+      },
     );
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
@@ -43,4 +53,4 @@ const nextConfig: NextConfig = {
 export default nextConfig;
 
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-initOpenNextCloudflareForDev();
+void initOpenNextCloudflareForDev();
