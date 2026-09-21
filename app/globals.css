@@ -10,7 +10,7 @@
   --color-red: #eb0028;
   --color-black: #1e1e1e;
   --color-white: #fff;
-  --color-gold: #ffd144; 
+  --color-gold: #ffd144;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-imfellEng: var(--font-imfell-eng);
@@ -18,7 +18,9 @@
   --font-sourceSerif4: var(--font-source-serif-4);
   --font-crimson-pro: var(--font-crimson-pro);
   --font-perandory: var(--font-perandory);
-  --background: oklch(1 0 0);  /* Start of Star Background for Upcoming(from animate-ui) */
+  --background: oklch(
+    1 0 0
+  ); /* Start of Star Background for Upcoming(from animate-ui) */
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -55,7 +57,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);  /* Star Background for Upcoming */
+  --font-sans: var(--font-sans); /* Star Background for Upcoming */
   --font-mono: var(--font-geist-mono);
   --font-imfellEng: var(--font-imfell-eng);
   --font-handjet: var(--font-handjet);
@@ -103,7 +105,9 @@
   --radius-xl: calc(var(--radius) * 1.4);
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6); /* End of Star Background for Upcoming */
+  --radius-4xl: calc(
+    var(--radius) * 2.6
+  ); /* End of Star Background for Upcoming */
 }
 
 body {
@@ -119,7 +123,7 @@ button:hover {
   #dialogue {
     height: 90lvh;
   }
-  #vidcomp{
+  #vidcomp {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
@@ -127,7 +131,7 @@ button:hover {
   #dialogue {
     height: 90lvh;
   }
-  #vidcomp{
+  #vidcomp {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -135,7 +139,7 @@ button:hover {
   #dialogue {
     height: 40lvh;
   }
-  #vidcomp{
+  #vidcomp {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -143,7 +147,7 @@ button:hover {
   #dialogue {
     height: 40lvh;
   }
-  #vidcomp{
+  #vidcomp {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -151,7 +155,7 @@ button:hover {
   #dialogue {
     height: 40lvh;
   }
-  #vidcomp{
+  #vidcomp {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -159,7 +163,7 @@ button:hover {
   #dialogue {
     height: 25lvh;
   }
-  #vidcomp{
+  #vidcomp {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
@@ -167,7 +171,7 @@ button:hover {
   #dialogue {
     height: 20lvh;
   }
-  #vidcomp{
+  #vidcomp {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
@@ -175,7 +179,7 @@ button:hover {
   #dialogue {
     height: 15lvh;
   }
-  #vidcomp{
+  #vidcomp {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
@@ -216,16 +220,17 @@ button:hover {
 }
 
 @layer utilities {
-    .no-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-    .no-scrollbar {
-        -ms-overflow-style: none; 
-        scrollbar-width: none;
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
-.dark { /* Added from Star Background for Upcoming till EoF */
+.dark {
+  /* Added from Star Background for Upcoming till EoF */
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

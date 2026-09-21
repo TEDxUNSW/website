@@ -6,7 +6,9 @@ import {
   IM_Fell_English_SC,
   Crimson_Pro,
   Source_Serif_4,
-  Montserrat, Inter } from "next/font/google";
+  Montserrat,
+  Inter,
+} from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
 import NavBar from "@/components/nav/NavBar";
@@ -14,7 +16,7 @@ import Footer from "@/components/Footer";
 import MobileNavBar from "@/components/nav/mobileNavBar";
 import { cn } from "@/lib/utils";
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 // Fail the production build if a route starts using request-time data
 export const dynamic = "error";
