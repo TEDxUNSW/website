@@ -232,12 +232,12 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-[url('/BlackBackground.png')] text-[var(--color-white)] bg-repeat bg-contain">
+    <div className="bg-[url('/BlackBackground.png')] text-white bg-repeat bg-contain">
       <div className="flex flex-col items-center justify-items-center min-h-screen text-5xl w-full">
         <Event />
         {/* mission&&talks recommendation session */}
         <div className="flex flex-1 bg-[url('/BlackBackground.png')] bg-repeat bg-contain w-full">
-          <div className="p-5 flex-col flex items-start justify-start gap-5 font-[family-name:var(--font-geist-mono)] font-bold w-full text-3xl">
+          <div className="p-5 flex-col flex items-start justify-start gap-5 font-(family-name:--font-geist-mono) font-bold w-full text-3xl">
             <div className="flex flex-row flex-nowrap bg-repeat bg-contain overflow-x-scroll no-scrollbar overflow-y-hidden w-full h-90 gap-10 p-2">
               <Title titleLg="Speakers" color="white" />
               <SpeakerCardBlocks
