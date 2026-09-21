@@ -3,7 +3,6 @@ import type { NextConfig } from "next";
 import type { Configuration, RuleSetCondition, RuleSetRule } from "webpack";
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
   webpack(config: Configuration) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module!.rules!.find(
