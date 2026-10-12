@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "checkJs": true,
     "skipLibCheck": true,
@@ -37,8 +41,12 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@/public/*": ["./public/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@/public/*": [
+        "./public/*"
+      ]
     }
   },
   "include": [
@@ -46,7 +54,12 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", ".open-next", "cloudflare-env.d.ts"]
+  "exclude": [
+    "node_modules",
+    ".open-next",
+    "cloudflare-env.d.ts"
+  ]
 }
