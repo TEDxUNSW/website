@@ -24,24 +24,45 @@ function generateStars(count: number, starColor: string) {
   for (let i = 0; i < count; i++) {
     const x = Math.floor(Math.random() * 4000) - 2000;
     const y = Math.floor(Math.random() * 4000) - 2000;
-    shadows.push(`${x}px ${y}px ${starColor}`);
+    shadows.push(`${x.toString()}px ${y.toString()}px ${starColor}`);
   }
   return shadows.join(", ");
 }
 
 function StarLayer({
-  count = 1000,
-  size = 1,
-  transition = { repeat: Infinity, duration: 50, ease: "linear" },
-  starColor = "#fff",
+  count,
+  size,
+  transition,
+  starColor,
   className,
   ...props
 }: StarLayerProps) {
-  const [boxShadow, setBoxShadow] = React.useState<string>("");
+  // Safe client-side mount check using useSyncExternalStore with a non-empty subscribe stub
+  const mounted = React.useSyncExternalStore(
+    React.useCallback(() => {
+      return () => {
+        // No-op cleanup for static mounting check
+      };
+    }, []),
+    () => true,
+    () => false,
+  );
 
-  React.useEffect(() => {
-    setBoxShadow(generateStars(count, starColor));
-  }, [count, starColor]);
+  const boxShadow = React.useMemo(() => {
+    if (!mounted) return "";
+    return generateStars(count, starColor);
+  }, [mounted, count, starColor]);
+
+  // Prevent server/client markup mismatch during SSR hydration
+  if (!mounted) {
+    return (
+      <motion.div
+        data-slot="star-layer"
+        className={cn("absolute top-0 left-0 w-full h-[2000px]", className)}
+        {...props}
+      />
+    );
+  }
 
   return (
     <motion.div
@@ -54,16 +75,16 @@ function StarLayer({
       <div
         className="absolute bg-transparent rounded-full"
         style={{
-          width: `${size}px`,
-          height: `${size}px`,
+          width: `${size.toString()}px`,
+          height: `${size.toString()}px`,
           boxShadow: boxShadow,
         }}
       />
       <div
         className="absolute bg-transparent rounded-full top-[2000px]"
         style={{
-          width: `${size}px`,
-          height: `${size}px`,
+          width: `${size.toString()}px`,
+          height: `${size.toString()}px`,
           boxShadow: boxShadow,
         }}
       />
@@ -96,7 +117,7 @@ function StarsBackground({
   const springY = useSpring(offsetY, transition);
 
   const handleMouseMove = React.useCallback(
-    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    (e: React.MouseEvent<HTMLDivElement>) => {
       const centerX = window.innerWidth / 2;
       const centerY = window.innerHeight / 2;
       const newOffsetX = -(e.clientX - centerX) * factor;
