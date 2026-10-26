@@ -27,7 +27,7 @@ export default function EventCardBlocks({
   return (
     <div className={colour_and_font}>
       <p className="text-xl font-bold">{year}</p>
-      <div className="grid pb-[5vh] md:h-[50vh] grid-rows-3 md:grid-cols-3 bg-contain text-white">
+      <div className="grid grid-rows md:grid-cols-3 bg-contain text-white">
         {events.slice(index_start, index_end).map((events) => {
           return (
             <Link href={events.url} key={events.eventName}>
@@ -39,7 +39,7 @@ export default function EventCardBlocks({
                 imageWidth="280px"
                 imageSrc={events.src}
                 altText={events.altText}
-                scaleOnHover={1.05}
+                scaleOnHover={1}
               />
             </Link>
           );

@@ -7,10 +7,16 @@ export interface EventCard {
 
 export const events: EventCard[] = [
   {
-    src: "/EventPageAssets/",
+    src: "/EventPageAssets/WaveLength.jpg",
     altText: "Wave Length",
     eventName: "Wave Length",
     url: "/events/WaveLength",
+  },
+  {
+    src: "/EventPageAssets/Aperture.png",
+    altText: "Aperture",
+    eventName: "Aperture",
+    url: "/events",
   },
   {
     src: "/EventPageAssets/InPlainSight.png",
@@ -37,7 +43,7 @@ export const events: EventCard[] = [
     url: "/events/CriticalAngles",
   },
   {
-    src: "/EventPageAssets/RedThreads.png",
+    src: "/EventPageAssets/RedThreads.jpeg",
     altText: "Red Threads",
     eventName: "Red Threads",
     url: "/events/RedThreads",
