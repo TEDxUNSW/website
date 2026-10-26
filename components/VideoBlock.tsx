@@ -2,11 +2,11 @@
 
 import Image from "next/image";
 
-export type src = {
+export interface src {
   src: string;
   titleImg: string;
   title: string;
-};
+}
 
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { useState } from "react";
@@ -18,7 +18,12 @@ export default function VideoBlock({ src, titleImg, title }: src) {
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)} className="relative">
+      <button
+        onClick={() => {
+          setIsOpen(true);
+        }}
+        className="relative"
+      >
         <div className="w-100 max-[95rem]:w-90 max-[85rem]:w-70  max-[75rem]:w-50">
           <Image
             src={srcImg}
@@ -38,13 +43,17 @@ export default function VideoBlock({ src, titleImg, title }: src) {
 
       <Dialog
         open={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={() => {
+          setIsOpen(false);
+        }}
         className="relative z-50"
       >
         <div className="fixed inset-0 flex w-full items-center justify-center">
           <DialogPanel
             className="w-full h-full border content-center bg-black/90 p-12"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+            }}
           >
             <div className="flex justify-center">
               <iframe src={src} id="dialogue" allow="autoplay" />

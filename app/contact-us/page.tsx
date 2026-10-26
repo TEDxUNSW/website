@@ -37,7 +37,9 @@ export default function ContactUsPage() {
               </p>
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText("tedxunswcurations@gmail.com");
+                  void navigator.clipboard.writeText(
+                    "tedxunswcurations@gmail.com",
+                  );
                 }}
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
@@ -71,7 +73,7 @@ export default function ContactUsPage() {
               </p>
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText(
+                  void navigator.clipboard.writeText(
                     "tedxunswsponsorships@gmail.com",
                   );
                 }}
@@ -108,7 +110,7 @@ export default function ContactUsPage() {
               </p>
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText(
+                  void navigator.clipboard.writeText(
                     "tedxunswsponsorships@gmail.com",
                   );
                 }}
@@ -146,7 +148,9 @@ export default function ContactUsPage() {
               </p>
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText("tedxunswcurations@gmail.com");
+                  void navigator.clipboard.writeText(
+                    "tedxunswcurations@gmail.com",
+                  );
                 }}
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
@@ -182,7 +186,7 @@ export default function ContactUsPage() {
               </p>
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText("tedxunsw@gmail.com");
+                  void navigator.clipboard.writeText("tedxunsw@gmail.com");
                 }}
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-2 left-0"
               >
@@ -202,7 +206,7 @@ export default function ContactUsPage() {
               />
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText("tedxunsw@gmail.com");
+                  void navigator.clipboard.writeText("tedxunsw@gmail.com");
                 }}
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-18 left-0"
               >
@@ -210,7 +214,7 @@ export default function ContactUsPage() {
               </button>
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText("tedxunsw@gmail.com");
+                  void navigator.clipboard.writeText("tedxunsw@gmail.com");
                 }}
                 className="absolute w-full h-15 rounded-lg bg-red-500 focus:outline-2 focus:outline-off-red active:bg-red-500 text-white bottom-34 left-0"
               >
@@ -218,7 +222,7 @@ export default function ContactUsPage() {
               </button>
               <button
                 onClick={() => {
-                  navigator.clipboard.writeText(
+                  void navigator.clipboard.writeText(
                     "tedxunswsponsorships@gmail.com",
                   );
                 }}

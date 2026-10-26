@@ -7,11 +7,19 @@ import {
   Crimson_Pro,
   Source_Serif_4,
   Montserrat,
+  Inter,
 } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/nav/NavBar";
 import Footer from "@/components/Footer";
+import MobileNavBar from "@/components/nav/mobileNavBar";
+import { cn } from "@/lib/utils";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+
+// Fail the production build if a route starts using request-time data
+export const dynamic = "error";
 
 const sourceSerif4 = Source_Serif_4({
   variable: "--font-source-serif-4",
@@ -114,11 +122,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", inter.variable)}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} ${amoresa.variable} ${perandory.variable} ${montserrat.variable} antialiased`}
       >
-        <NavBar />
+        <div className="sticky top-0 z-50 block min-[880px]:hidden">
+          <MobileNavBar />
+        </div>
+        <div className="sticky top-0 z-50 hidden min-[880px]:block">
+          <NavBar />
+        </div>
         <div className="bg-[url('/BlackBackground.png')] bg-repeat bg-contain">
           {children}
           <Footer />

@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 import VideoCard, { VideoItem } from "./VideoCards";
 
-type VideoGalleryProps = {
+interface VideoGalleryProps {
   videos: VideoItem[];
-};
+}
 
 export default function VideoGallery({ videos }: VideoGalleryProps) {
   const years = useMemo(() => {
@@ -28,7 +28,9 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
             return (
               <button
                 key={year}
-                onClick={() => setActiveYear(year)}
+                onClick={() => {
+                  setActiveYear(year);
+                }}
                 className={`rounded-t-2xl px-5 py-3 text-sm font-medium transition-all ${
                   isActive
                     ? "bg-black text-white"

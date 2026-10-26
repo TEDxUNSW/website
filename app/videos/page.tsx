@@ -4,7 +4,8 @@ const videos = [
   {
     src: "https://www.youtube.com/embed/vo64lKi-DiY&autoplay=1",
     titleImg: "ChristineAi.jpg",
-    title: "We should all draw without an eraser | Christine Ai | Off The Record",
+    title:
+      "We should all draw without an eraser | Christine Ai | Off The Record",
     year: 2025,
   },
   {
@@ -16,31 +17,36 @@ const videos = [
   {
     src: "https://www.youtube.com/embed/abkWsmSdOVo&autoplay=1",
     titleImg: "LennyVartanian.jpg",
-    title: "Refocusing the fitness industry on health | Lenny Vartanian | In Plain Sight",
+    title:
+      "Refocusing the fitness industry on health | Lenny Vartanian | In Plain Sight",
     year: 2025,
   },
   {
     src: "https://www.youtube.com/embed/vE0cfk34YkQ&autoplay=1",
     titleImg: "JamesTran.jpg",
-    title: "The beauty of taking a photo every day | James Tran | In Plain Sight",
+    title:
+      "The beauty of taking a photo every day | James Tran | In Plain Sight",
     year: 2025,
   },
   {
     src: "https://www.youtube.com/embed/OajPRC_8WSk&autoplay=1",
     titleImg: "SashaVassar.jpg",
-    title: "The Learning Blind Spot: Why We Miss What Matters | Sasha Vassar | In Plain Sight",
+    title:
+      "The Learning Blind Spot: Why We Miss What Matters | Sasha Vassar | In Plain Sight",
     year: 2025,
   },
   {
     src: "https://www.youtube.com/embed/ddogc3GvBN4&autoplay=1",
     titleImg: "KateBrady.jpg",
-    title: "We Prepare to Survive Disasters But Not to Cope With What Comes After | Kate Brady | In Plain Sight",
+    title:
+      "We Prepare to Survive Disasters But Not to Cope With What Comes After | Kate Brady | In Plain Sight",
     year: 2025,
   },
   {
     src: "https://www.youtube.com/embed/gJzjbODDxcY&autoplay=1",
     titleImg: "JoeKwon.jpg",
-    title: "Changing Our Perceptions Beyond the Headlines | Joe Kwon | Wildcard",
+    title:
+      "Changing Our Perceptions Beyond the Headlines | Joe Kwon | Wildcard",
     year: 2025,
   },
   {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, forwardRef } from "react";
+import { useRef, useEffect, useMemo, forwardRef } from "react";
 import {
   Canvas,
   useFrame,
@@ -141,29 +141,41 @@ void mainImage(in vec4 inputColor, in vec2 uv, out vec4 outputColor) {
 }
 `;
 
+interface RetroEffectOptions {
+  colorNum?: number;
+  pixelSize?: number;
+}
+
 class RetroEffectImpl extends Effect {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public uniforms: Map<string, THREE.Uniform<any>>;
-  constructor() {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const uniforms = new Map<string, THREE.Uniform<any>>([
-      ["colorNum", new THREE.Uniform(4.0)],
-      ["pixelSize", new THREE.Uniform(2.0)],
+  private readonly colorNumUniform: THREE.Uniform<number>;
+  private readonly pixelSizeUniform: THREE.Uniform<number>;
+
+  constructor({ colorNum = 4.0, pixelSize = 2.0 }: RetroEffectOptions = {}) {
+    const colorNumUniform = new THREE.Uniform(colorNum);
+    const pixelSizeUniform = new THREE.Uniform(pixelSize);
+    const uniforms = new Map<string, THREE.Uniform<number>>([
+      ["colorNum", colorNumUniform],
+      ["pixelSize", pixelSizeUniform],
     ]);
     super("RetroEffect", ditherFragmentShader, { uniforms });
-    this.uniforms = uniforms;
+    this.colorNumUniform = colorNumUniform;
+    this.pixelSizeUniform = pixelSizeUniform;
   }
+
   set colorNum(value: number) {
-    this.uniforms.get("colorNum")!.value = value;
+    this.colorNumUniform.value = value;
   }
+
   get colorNum(): number {
-    return this.uniforms.get("colorNum")!.value;
+    return this.colorNumUniform.value;
   }
+
   set pixelSize(value: number) {
-    this.uniforms.get("pixelSize")!.value = value;
+    this.pixelSizeUniform.value = value;
   }
+
   get pixelSize(): number {
-    return this.uniforms.get("pixelSize")!.value;
+    return this.pixelSizeUniform.value;
   }
 }
 
@@ -181,8 +193,7 @@ const RetroEffect = forwardRef<
 RetroEffect.displayName = "RetroEffect";
 
 interface WaveUniforms {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [key: string]: THREE.Uniform<any>;
+  [key: string]: THREE.Uniform;
   time: THREE.Uniform<number>;
   resolution: THREE.Uniform<THREE.Vector2>;
   waveSpeed: THREE.Uniform<number>;
@@ -193,6 +204,8 @@ interface WaveUniforms {
   enableMouseInteraction: THREE.Uniform<number>;
   mouseRadius: THREE.Uniform<number>;
 }
+
+type WaveShaderMaterial = THREE.ShaderMaterial & { uniforms: WaveUniforms };
 
 interface DitheredWavesProps {
   waveSpeed: number;
@@ -218,36 +231,42 @@ function DitheredWaves({
   mouseRadius,
 }: DitheredWavesProps) {
   const mesh = useRef<THREE.Mesh>(null);
+  const waveMaterialRef = useRef<WaveShaderMaterial>(null);
   const mouseRef = useRef(new THREE.Vector2());
   const { viewport, size, gl } = useThree();
 
-  const hasGL = !!gl?.getContext?.();
-
-  const waveUniformsRef = useRef<WaveUniforms>({
-    time: new THREE.Uniform(0),
-    resolution: new THREE.Uniform(new THREE.Vector2(0, 0)),
-    waveSpeed: new THREE.Uniform(waveSpeed),
-    waveFrequency: new THREE.Uniform(waveFrequency),
-    waveAmplitude: new THREE.Uniform(waveAmplitude),
-    waveColor: new THREE.Uniform(new THREE.Color(...waveColor)),
-    mousePos: new THREE.Uniform(new THREE.Vector2(0, 0)),
-    enableMouseInteraction: new THREE.Uniform(enableMouseInteraction ? 1 : 0),
-    mouseRadius: new THREE.Uniform(mouseRadius),
-  });
+  const initialWaveUniforms = useMemo<WaveUniforms>(
+    () => ({
+      time: new THREE.Uniform(0),
+      resolution: new THREE.Uniform(new THREE.Vector2(0, 0)),
+      waveSpeed: new THREE.Uniform(0),
+      waveFrequency: new THREE.Uniform(0),
+      waveAmplitude: new THREE.Uniform(0),
+      waveColor: new THREE.Uniform(new THREE.Color()),
+      mousePos: new THREE.Uniform(new THREE.Vector2(0, 0)),
+      enableMouseInteraction: new THREE.Uniform(0),
+      mouseRadius: new THREE.Uniform(0),
+    }),
+    [],
+  );
 
   useEffect(() => {
+    const material = waveMaterialRef.current;
+    if (!material) return;
+
     const dpr = gl.getPixelRatio();
     const newWidth = Math.floor(size.width * dpr);
     const newHeight = Math.floor(size.height * dpr);
-    const currentRes = waveUniformsRef.current.resolution.value;
+    const currentRes = material.uniforms.resolution.value;
     if (currentRes.x !== newWidth || currentRes.y !== newHeight) {
       currentRes.set(newWidth, newHeight);
     }
   }, [size, gl]);
 
-  const prevColor = useRef([...waveColor]);
   useFrame(({ clock }) => {
-    const u = waveUniformsRef.current;
+    const material = waveMaterialRef.current;
+    if (!material) return;
+    const u = material.uniforms;
 
     if (!disableAnimation) {
       u.time.value = clock.getElapsedTime();
@@ -259,9 +278,13 @@ function DitheredWaves({
     if (u.waveAmplitude.value !== waveAmplitude)
       u.waveAmplitude.value = waveAmplitude;
 
-    if (!prevColor.current.every((v, i) => v === waveColor[i])) {
-      u.waveColor.value.set(...waveColor);
-      prevColor.current = [...waveColor];
+    const currentColor = u.waveColor.value;
+    if (
+      currentColor.r !== waveColor[0] ||
+      currentColor.g !== waveColor[1] ||
+      currentColor.b !== waveColor[2]
+    ) {
+      currentColor.set(...waveColor);
     }
 
     u.enableMouseInteraction.value = enableMouseInteraction ? 1 : 0;
@@ -287,17 +310,16 @@ function DitheredWaves({
       <mesh ref={mesh} scale={[viewport.width, viewport.height, 1]}>
         <planeGeometry args={[1, 1]} />
         <shaderMaterial
+          ref={waveMaterialRef}
           vertexShader={waveVertexShader}
           fragmentShader={waveFragmentShader}
-          uniforms={waveUniformsRef.current}
+          uniforms={initialWaveUniforms}
         />
       </mesh>
 
-      {hasGL && (
-        <EffectComposer key="retro-composer">
-          <RetroEffect colorNum={colorNum} pixelSize={pixelSize} />
-        </EffectComposer>
-      )}
+      <EffectComposer key="retro-composer">
+        <RetroEffect colorNum={colorNum} pixelSize={pixelSize} />
+      </EffectComposer>
 
       <mesh
         onPointerMove={handlePointerMove}
@@ -341,7 +363,9 @@ function FpsTicker({ fps = 30 }) {
     };
 
     raf = requestAnimationFrame(loop);
-    return () => cancelAnimationFrame(raf);
+    return () => {
+      cancelAnimationFrame(raf);
+    };
   }, [fps]);
 
   return null;

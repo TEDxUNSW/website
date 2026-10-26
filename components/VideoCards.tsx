@@ -4,12 +4,12 @@ import Image from "next/image";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { useState } from "react";
 
-export type VideoItem = {
+export interface VideoItem {
   src: string;
   titleImg: string;
   title: string;
   year: number;
-};
+}
 
 type VideoCardProps = VideoItem;
 
@@ -33,7 +33,7 @@ export default function VideoCard({ src, titleImg, title }: VideoCardProps) {
     const rotateX = ((centerY - y) / centerY) * 8;
 
     setTransform(
-      `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.04)`,
+      `perspective(1000px) rotateX(${rotateX.toString()}deg) rotateY(${rotateY.toString()}deg) scale(1.04)`,
     );
   }
 
@@ -44,7 +44,9 @@ export default function VideoCard({ src, titleImg, title }: VideoCardProps) {
   return (
     <>
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => {
+          setIsOpen(true);
+        }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         className="group relative w-full text-left transition-transform duration-200"
@@ -72,7 +74,9 @@ export default function VideoCard({ src, titleImg, title }: VideoCardProps) {
 
       <Dialog
         open={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={() => {
+          setIsOpen(false);
+        }}
         className="relative z-50"
       >
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
@@ -84,7 +88,9 @@ export default function VideoCard({ src, titleImg, title }: VideoCardProps) {
                 {title}
               </h2>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                }}
                 className="rounded-md px-3 py-1 text-sm text-white/80 hover:bg-white/10 hover:text-white"
               >
                 Close
