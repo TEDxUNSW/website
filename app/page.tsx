@@ -104,6 +104,42 @@ const srcs = [
 
 const speakers = [
   {
+    src: "/speakerCards/Paris Jade Burrows.png",
+    altText: "Paris Jade Burrows",
+    speakerName: "",
+    captionText: "Fashion Designer",
+  },
+  {
+    src: "/speakerCards/S. Fahad Ahmad.png",
+    altText: "S. Fahad Ahmad",
+    speakerName: "",
+    captionText: "CEO of Women and Girls' Emergency Centre",
+  },
+  {
+    src: "/speakerCards/Nicole Yade.png",
+    altText: "Nicole Yade",
+    speakerName: "",
+    captionText: "CEO of Women and Girls' Emergency Centre",
+  },
+  {
+    src: "/speakerCards/Demas Rusli.png",
+    altText: "Demas Rusli",
+    speakerName: "",
+    captionText: "Photographer and Designer",
+  },
+  {
+    src: "/speakerCards/Doadenz.png",
+    altText: "Doadenz",
+    speakerName: "",
+    captionText: "Ghanaian-Australian Rapper",
+  },
+  {
+    src: "/speakerCards/Roanna Chan.png",
+    altText: "Roanna Chen",
+    speakerName: "",
+    captionText: "Clinical Psychologist",
+  },
+  {
     src: "/speakerCards/Alex Lee.jpg",
     altText: "Alex Lee",
     speakerName: "Alex Lee",
@@ -242,28 +278,35 @@ export default function Home() {
               <Title titleLg="Speakers" color="white" />
               <SpeakerCardBlocks
                 index_start={0}
-                index_end={4}
+                index_end={6}
+                speakers={speakers}
+                theme={"Aperture"}
+                colour_and_font={"text-[var(--color-white)] font-perandory"}
+              />
+              <SpeakerCardBlocks
+                index_start={6}
+                index_end={10}
                 speakers={speakers}
                 theme={"Wavelengths"}
                 colour_and_font={"text-[var(--color-white)] font-perandory"}
               />
               <SpeakerCardBlocks
-                index_start={4}
-                index_end={10}
+                index_start={10}
+                index_end={16}
                 speakers={speakers}
                 theme={"Off The Record"}
                 colour_and_font={"text-[var(--color-gold)]"}
               />
               <SpeakerCardBlocks
-                index_start={10}
-                index_end={14}
+                index_start={16}
+                index_end={20}
                 speakers={speakers}
                 theme={"WILDCARD"}
                 colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
               />
               <SpeakerCardBlocks
-                index_start={14}
-                index_end={18}
+                index_start={20}
+                index_end={24}
                 speakers={speakers}
                 theme={"In Plain Sight"}
                 colour_and_font={"font-handjet"}
