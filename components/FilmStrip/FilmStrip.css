@@ -1,0 +1,88 @@
+/* 35mm film strip. Everything is sized from --film-frame-h (the photo height). */
+.film-strip {
+  --fh: var(--film-frame-h, 9rem);
+  --rail: calc(var(--fh) * 0.26);
+  --gap: calc(var(--fh) * 0.09);
+  --frame-w: calc(var(--fh) * 1.5 + var(--gap));
+  overflow: hidden;
+  background: #0d0b0a;
+  color: rgb(244 236 223 / 0.55);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: calc(var(--fh) * 0.055);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.film-strip-track {
+  display: flex;
+  width: max-content;
+  animation: film-strip-scroll var(--film-duration, 60s) linear infinite;
+}
+
+.film-strip-reverse .film-strip-track {
+  animation-direction: reverse;
+}
+
+@keyframes film-strip-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-strip-track {
+    animation: none;
+  }
+}
+
+.film-strip-frame {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: var(--frame-w);
+}
+
+/* Backlit sprocket holes, 8 per frame like real 35mm */
+.film-strip-rail {
+  position: relative;
+  height: var(--rail);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10' preserveAspectRatio='none'%3E%3Crect x='3' y='0' width='4.4' height='10' rx='1' fill='%23f4ecdf' fill-opacity='0.88'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: 0 50%;
+  background-size: calc(var(--frame-w) / 8) calc(var(--fh) * 0.11);
+}
+
+/* Out of focus. The holes are blurred inside the image (drawn once), with room around
+   them for the blur, rather than with a blur filter, which Firefox redraws every frame. */
+.film-strip-soft .film-strip-rail {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -3 10 16' preserveAspectRatio='none'%3E%3Cfilter id='b' x='-50%25' y='-40%25' width='200%25' height='180%25'%3E%3CfeGaussianBlur stdDeviation='0.55 1'/%3E%3C/filter%3E%3Crect x='3' y='0' width='4.4' height='10' rx='1' fill='%23f4ecdf' fill-opacity='0.88' filter='url(%23b)'/%3E%3C/svg%3E");
+  background-size: calc(var(--frame-w) / 8) calc(var(--fh) * 0.176);
+}
+
+.film-strip-soft .film-strip-mark {
+  opacity: 0.25;
+}
+
+.film-strip-mark {
+  position: absolute;
+  top: calc(var(--fh) * 0.015);
+}
+
+.film-strip-rail-bottom .film-strip-mark {
+  top: auto;
+  bottom: calc(var(--fh) * 0.015);
+}
+
+.film-strip-image {
+  position: relative;
+  height: var(--fh);
+  margin: 0 calc(var(--gap) / 2);
+  overflow: hidden;
+  border-radius: calc(var(--fh) * 0.025);
+  background: #1a1614;
+}
