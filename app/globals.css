@@ -3,7 +3,6 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
-/* @import "tailwindcss/preflight"; */
 @tailwind utilities;
 
 :root {
@@ -67,6 +66,8 @@
   --font-sourceSerif4: var(--font-source-serif-4);
   --font-crimson-pro: var(--font-crimson-pro);
   --font-perandory: var(--font-perandory);
+  --font-dseg14: var(--font-dseg14);
+  --font-rubik: var(--font-rubik);
   --color-proper-red: #eb0028;
   --color-off-red: rgba(255, 0, 0, 0.459);
   --font-heading: var(--font-sans); /* Start of Star Background for Upcoming */
