@@ -131,14 +131,11 @@ export default function FeaturedTalks({
     if (slidingRef.current) {
       finishSlide();
     }
-    // Only needed when the responsive layout changes.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visibleCount, reducedMotion]);
 
   function updatePause() {
     setIsPaused(hoveredRef.current || focusedRef.current);
   }
-
 
   return (
     <section
@@ -187,16 +184,14 @@ export default function FeaturedTalks({
         >
           {visibleVideos.map((video, index) => {
             const videoKey =
-              video.src ||
-              `${video.year.toString()}-${video.title}`;
+              video.src || `${video.year.toString()}-${video.title}`;
 
             return (
               <div
                 key={videoKey}
                 className="min-w-0 shrink-0 basis-[calc((100%-0.75rem)/2)] lg:basis-[calc((100%-1.5rem)/3)]"
                 style={{
-                  opacity:
-                    isSliding && index === 0 ? 0 : 1,
+                  opacity: isSliding && index === 0 ? 0 : 1,
                   transition:
                     isSliding && index === 0
                       ? "opacity 700ms ease-out"
@@ -218,4 +213,3 @@ export default function FeaturedTalks({
     </section>
   );
 }
-

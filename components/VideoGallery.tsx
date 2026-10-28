@@ -132,7 +132,7 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
     return () => {
       window.clearInterval(timer);
     };
-  }, [filteredVideos, rotatedVideos, isPaused]);
+  }, [isVideoOpen, filteredVideos, rotatedVideos, isPaused]);
 
   // animate cards from their previous positions to their new ones
   useLayoutEffect(() => {

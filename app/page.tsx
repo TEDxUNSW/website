@@ -45,7 +45,7 @@ const speakers = [
     speakerName: "Dr Jake Renzella",
     captionText:
       "Senior Lecturer in the School" +
-      "of Computer Science and Engineering at UNSW",
+      " of Computer Science and Engineering at UNSW",
   },
   {
     src: "/speakerCards/Dr Anastasia Hronis.jpg",
@@ -177,27 +177,23 @@ export default function Home() {
             </div>
 
             {/* Featured talks section */}
-            <section className="flex w-full flex-col gap-8 py-12">
+            <section className="flex w-full flex-col gap-5 py-7">
               <div className="flex flex-wrap items-end justify-between gap-4">
                 <div>
-                  <p className="mb-2 text-sm font-medium uppercase tracking-[0.25em] text-red-500">
-                    Ideas worth spreading
-                  </p>
-
                   <h2 className="text-3xl font-bold text-white md:text-4xl">
                     Featured Talks
                   </h2>
-                </div>
 
-                <Link
-                  href="/talks"
-                  className="group flex items-center gap-2 text-sm font-semibold text-red-500 transition-colors hover:text-white"
-                >
-                  View All Talks
-                  <span className="transition-transform duration-300 group-hover:translate-x-1">
-                    →
-                  </span>
-                </Link>
+                  <Link
+                    href="/talks"
+                    className="group flex items-center gap-2 text-sm font-semibold text-red-500 transition-colors hover:text-white"
+                  >
+                    View All Talks
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Link>
+                </div>
               </div>
 
               <div className="mx-auto w-full max-w-6xl">
