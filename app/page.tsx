@@ -1,106 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
-
 import Title from "../components/Title";
 import Event from "../components/Event";
-import VideoComponents from "@/components/VideoComponents";
+import FeaturedTalks from "@/components/FeaturedTalks";
+import videos from "@/data/videos";
 import SpeakerCardBlocks from "@/components/SpeakerCardBlocks";
-
-interface WindowDimensions {
-  width: number;
-  height: number;
-}
-
-// https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
-function getWindowDimensions(): WindowDimensions {
-  // Only works in the browser (only call this in a useEffect)
-  return {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  };
-}
-
-function useWindowDimensions() {
-  // Don't call getWindowDimensions() in the initial state, because it will break server-side rendering
-  const [windowDimensions, setWindowDimensions] = useState<WindowDimensions>();
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    handleResize(); // Call it once to set the initial dimensions
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  return windowDimensions;
-}
-
-const srcs = [
-  {
-    src: "https://www.youtube.com/embed/7FpcfuqGLTw?autoplay=1",
-    titleImg: "RachaelBolton.jpg",
-    title:
-      "Resilience is holding you back — here’s why | Rachael Bolton | TEDxUNSW Salon",
-  },
-  {
-    src: "https://www.youtube.com/embed/AzTzqoheQDw?autoplay=1",
-    titleImg: "AaronEger.jpg",
-    title: "We Know Enough to Save Our Planet | Aaron Eger | TEDxUNSW Salon",
-  },
-  {
-    src: "https://www.youtube.com/embed/0LcSiEy-pic?autoplay=1",
-    titleImg: "AdamMada.jpg",
-    title: "Solving the Impossible | Adam Mada | TEDxUNSW Salon",
-  },
-  {
-    src: "https://www.youtube.com/embed/gJzjbODDxcY?autoplay=1",
-    titleImg: "JoeKwon.jpg",
-    title:
-      "Changing Our Perceptions Beyond the Headlines | Joe Kwon | TEDxUNSW Salon",
-  },
-  {
-    src: "https://www.youtube.com/embed/abkWsmSdOVo?autoplay=1",
-    titleImg: "LennyVartanian.png",
-    title:
-      "Refocusing the fitness industry on health | Lenny Vartanian | In Plain Sight",
-  },
-  {
-    src: "https://www.youtube.com/embed/vE0cfk34YkQ?autoplay=1",
-    titleImg: "JamesTran.png",
-    title:
-      "The beauty of taking a photo every day | James Tran | In Plain Sight",
-  },
-  {
-    src: "https://www.youtube.com/embed/OajPRC_8WSk?autoplay=1",
-    titleImg: "SashaVassar.png",
-    title:
-      "The Learning Blind Spot: Why We Miss What Matters | Sasha Vassar | In Plain Sight",
-  },
-  {
-    src: "https://www.youtube.com/embed/ddogc3GvBN4?autoplay=1",
-    titleImg: "KateBrandy.png",
-    title:
-      "We Prepare to Survive Disasters But Not to Cope With What Comes After | Kate Brady | TEDxUNSW Salon",
-  },
-  {
-    src: "https://www.youtube.com/embed/seRkEyP6v5Q?autoplay=1",
-    titleImg: "StevenMost.png",
-    title:
-      "Teaching and the vanishing art of connection | Steven Most | Red Threads",
-  },
-  {
-    src: "https://www.youtube.com/embed/oGxSeX3_iIA?autoplay=1",
-    titleImg: "CaitlinCreek.png",
-    title:
-      "A Deep Dive of Sydney’s Infamous Eight-Legged Serial Killers | Caitlin Creak | Critical Angles ",
-  },
-];
+import Link from "next/link";
 
 const speakers = [
   {
@@ -140,7 +45,7 @@ const speakers = [
     speakerName: "Dr Jake Renzella",
     captionText:
       "Senior Lecturer in the School" +
-      "of Computer Science and Engineering at UNSW",
+      " of Computer Science and Engineering at UNSW",
   },
   {
     src: "/speakerCards/Dr Anastasia Hronis.jpg",
@@ -219,18 +124,6 @@ const speakers = [
 ];
 
 export default function Home() {
-  const width: number | undefined = useWindowDimensions()?.width;
-
-  let imageEndPoints = 9;
-
-  if (typeof width !== "undefined") {
-    if (width < 480) {
-      imageEndPoints = 3;
-    } else if (width < 1045) {
-      imageEndPoints = 6;
-    }
-  }
-
   return (
     <div className="bg-[url('/BlackBackground.png')] text-white bg-repeat bg-contain">
       <div className="flex flex-col items-center justify-items-center min-h-screen text-5xl w-full">
@@ -282,18 +175,32 @@ export default function Home() {
                 passion outside of the classroom.
               </p>
             </div>
-            <div className="flex flex-col gap-10 md:gap-20 sm:flex-row">
-              <Title
-                titleLg="Talks"
-                titleSm="More"
-                color="white"
-                route="/talks"
-              />
-              {/* this is where talks are recommended */}
-              <div>
-                <VideoComponents start={0} end={imageEndPoints} srcs={srcs} />
+
+            {/* Featured talks section */}
+            <section className="flex w-full flex-col gap-5 py-7">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div>
+                  <h2 className="text-3xl font-bold text-white md:text-4xl">
+                    Featured Talks
+                  </h2>
+
+                  <Link
+                    href="/talks"
+                    className="group flex items-center gap-2 text-sm font-semibold text-red-500 transition-colors hover:text-white"
+                  >
+                    View All Talks
+                    <span className="transition-transform duration-300 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </Link>
+                </div>
               </div>
-            </div>
+
+              <div className="mx-auto w-full max-w-6xl">
+                <FeaturedTalks videos={videos} limit={6} />
+              </div>
+            </section>
+
             <Title
               titleLg="Contact Us"
               titleSm="More"
