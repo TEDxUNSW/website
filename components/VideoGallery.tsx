@@ -1,75 +1,228 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import VideoCard, { VideoItem } from "./VideoCards";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import VideoCard, { type VideoItem } from "./VideoCards";
 
 interface VideoGalleryProps {
   videos: VideoItem[];
 }
 
+type YearFilter = "all" | number;
+
+const years = [2026, 2025, 2024];
+
 export default function VideoGallery({ videos }: VideoGalleryProps) {
-  const years = useMemo(() => {
-    return Array.from(new Set(videos.map((video) => video.year))).sort(
-      (a, b) => b - a,
-    );
-  }, [videos]);
+  const [activeYear, setActiveYear] = useState<YearFilter>("all");
 
-  const [activeYear, setActiveYear] = useState(years[0]);
+  const [rotation, setRotation] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const filteredVideos = videos.filter((video) => video.year === activeYear);
+  const cardRefs = useRef(new Map<string, HTMLDivElement>());
+  const previousPositions = useRef(new Map<string, DOMRect>());
+  const shouldAnimate = useRef(false);
+
+  const filteredVideos = useMemo(() => {
+    if (activeYear === "all") {
+      return [...videos].sort((a, b) => b.year - a.year);
+    }
+
+    return videos.filter((video) => video.year === activeYear);
+  }, [videos, activeYear]);
+
+  const rotatedVideos = useMemo(() => {
+    if (filteredVideos.length === 0) return [];
+
+    const offset = rotation % filteredVideos.length;
+
+    return [
+      ...filteredVideos.slice(offset),
+      ...filteredVideos.slice(0, offset),
+    ];
+  }, [filteredVideos, rotation]);
+
+  // rotate the gallery every 6 seconds.
+  useEffect(() => {
+    if (
+      isPaused ||
+      filteredVideos.length <= 1 ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      // save each card's position before changing the order.
+      const positions = new Map<string, DOMRect>();
+
+      cardRefs.current.forEach((element, key) => {
+        positions.set(key, element.getBoundingClientRect());
+      });
+
+      previousPositions.current = positions;
+      shouldAnimate.current = true;
+
+      setRotation((current) => current + 1);
+    }, 6000);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [filteredVideos, isPaused]);
+
+  // animate cards from their previous positions to their new ones
+  useLayoutEffect(() => {
+    if (!shouldAnimate.current) return;
+
+    shouldAnimate.current = false;
+
+    cardRefs.current.forEach((element, key) => {
+      const previous = previousPositions.current.get(key);
+
+      if (!previous) return;
+
+      const next = element.getBoundingClientRect();
+
+      const deltaX = previous.left - next.left;
+      const deltaY = previous.top - next.top;
+
+      if (deltaX === 0 && deltaY === 0) return;
+
+      element.animate(
+        [
+          {
+            transform: `translate(${deltaX.toString()}px, ${deltaY.toString()}px)`,
+          },
+          {
+            transform: "translate(0px, 0px)",
+          },
+        ],
+        {
+          duration: 1100,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+        },
+      );
+    });
+  }, [rotatedVideos]);
+
+  const tabs: { label: string; value: YearFilter }[] = [
+    { label: "All Talks", value: "all" },
+    ...years.map((year) => ({
+      label: year.toString(),
+      value: year,
+    })),
+  ];
 
   return (
     <section className="w-full">
-      <div className="overflow-hidden rounded-3xl border border-white/10 bg-neutral-950 shadow-2xl">
-        <div className="flex gap-1 overflow-x-auto border-b border-white/10 bg-neutral-900 px-3 pt-3">
-          {years.map((year) => {
-            const isActive = year === activeYear;
+      {/* year nav */}
+      <div className="mb-10 flex items-center justify-between gap-4 border-b border-white/10">
+        <div
+          className="flex gap-8 overflow-x-auto"
+          role="group"
+          aria-label="Filter talks by year"
+        >
+          {tabs.map((tab) => {
+            const isActive = tab.value === activeYear;
 
             return (
               <button
-                key={year}
+                key={tab.value}
+                type="button"
                 onClick={() => {
-                  setActiveYear(year);
+                  setActiveYear(tab.value);
+                  setRotation(0);
+                  shouldAnimate.current = false;
+                  previousPositions.current.clear();
                 }}
-                className={`rounded-t-2xl px-5 py-3 text-sm font-medium transition-all ${
-                  isActive
-                    ? "bg-black text-white"
-                    : "bg-white/5 text-white/60 hover:bg-white/10 hover:text-white"
+                aria-pressed={isActive}
+                className={`group relative shrink-0 pb-5 text-lg font-medium transition-colors duration-300 ${
+                  isActive ? "text-white" : "text-white/40 hover:text-white/80"
                 }`}
               >
-                {year}
+                {tab.label}
+
+                {/* red underline */}
+                <span
+                  className={`absolute bottom-0 left-0 h-[3px] w-full origin-center rounded-full bg-red-500 transition-transform duration-300 ease-out ${
+                    isActive ? "scale-x-100" : "scale-x-0"
+                  }`}
+                />
               </button>
             );
           })}
         </div>
 
-        <div className="bg-black p-6 md:p-8">
-          <div className="mb-6 flex items-center justify-between">
-            <h2 className="text-2xl font-bold">{activeYear} Talks</h2>
-            <p className="text-sm text-white/50">
-              {filteredVideos.length} videos
-            </p>
-          </div>
-
-          {filteredVideos.length > 0 ? (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
-              {filteredVideos.map((video) => (
-                <VideoCard
-                  key={video.src}
-                  src={video.src}
-                  titleImg={video.titleImg}
-                  title={video.title}
-                  year={video.year}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-10 text-center text-white/60">
-              No videos available for {activeYear}.
-            </div>
-          )}
-        </div>
+        <p className="hidden shrink-0 pb-5 text-sm text-white/40 sm:block">
+          {filteredVideos.length} talks
+        </p>
       </div>
+
+      {/* gallery heading */}
+      <div className="mb-8">
+        <h3 className="text-2xl font-semibold tracking-tight md:text-3xl">
+          {activeYear === "all"
+            ? "All Talks"
+            : `${activeYear.toString()} Talks`}
+        </h3>
+
+        <p className="mt-2 text-sm text-white/40">
+          {activeYear === "all"
+            ? "Explore inspiring talks from across the years."
+            : `Explore ideas and perspectives from ${activeYear.toString()}.`}
+        </p>
+      </div>
+
+      {/* rotating video grid */}
+      {filteredVideos.length > 0 ? (
+        <div
+          onMouseEnter={() => {
+            setIsPaused(true);
+          }}
+          onMouseLeave={() => {
+            setIsPaused(false);
+          }}
+          onFocusCapture={() => {
+            setIsPaused(true);
+          }}
+          onBlurCapture={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget)) {
+              setIsPaused(false);
+            }
+          }}
+          className="grid grid-cols-1 gap-7 sm:grid-cols-2 xl:grid-cols-3"
+        >
+          {rotatedVideos.map((video) => {
+            const videoKey =
+              video.src || `${video.year.toString()}-${video.title}`;
+
+            return (
+              <div
+                key={videoKey}
+                ref={(element) => {
+                  if (element) {
+                    cardRefs.current.set(videoKey, element);
+                  } else {
+                    cardRefs.current.delete(videoKey);
+                  }
+                }}
+                className="min-w-0"
+              >
+                <VideoCard {...video} />
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-12 text-center">
+          <p className="text-lg font-medium text-white/80">
+            No talks available yet
+          </p>
+
+          <p className="mt-2 text-sm text-white/40">
+            Talks from {activeYear} will appear here once added.
+          </p>
+        </div>
+      )}
     </section>
   );
 }
