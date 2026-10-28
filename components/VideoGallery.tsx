@@ -16,10 +16,13 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
 
   const [rotation, setRotation] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   const cardRefs = useRef(new Map<string, HTMLDivElement>());
   const previousPositions = useRef(new Map<string, DOMRect>());
   const shouldAnimate = useRef(false);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const outgoingKey = useRef<string | null>(null);
 
   const filteredVideos = useMemo(() => {
     if (activeYear === "all") {
@@ -44,6 +47,7 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
   useEffect(() => {
     if (
       isPaused ||
+      isVideoOpen ||
       filteredVideos.length <= 1 ||
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     ) {
@@ -51,7 +55,9 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
     }
 
     const timer = window.setInterval(() => {
-      // save each card's position before changing the order.
+      if (document.visibilityState !== "visible") return;
+
+      // Record the current position of each card.
       const positions = new Map<string, DOMRect>();
 
       cardRefs.current.forEach((element, key) => {
@@ -61,13 +67,72 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
       previousPositions.current = positions;
       shouldAnimate.current = true;
 
+      // Find the first card in the current visual order.
+      const firstCard = gridRef.current?.firstElementChild;
+
+      if (firstCard instanceof HTMLElement) {
+        const firstVideo = rotatedVideos[0];
+
+        if (firstVideo) {
+          outgoingKey.current =
+            firstVideo.src ||
+            `${firstVideo.year.toString()}-${firstVideo.title}`;
+        }
+
+        // Create a temporary visual copy of the outgoing card.
+        const ghost = firstCard.cloneNode(true) as HTMLElement;
+        const rect = firstCard.getBoundingClientRect();
+
+        ghost.setAttribute("aria-hidden", "true");
+        ghost.inert = true;
+
+        Object.assign(ghost.style, {
+          position: "fixed",
+          left: `${rect.left.toString()}px`,
+          top: `${rect.top.toString()}px`,
+          width: `${rect.width.toString()}px`,
+          height: `${rect.height.toString()}px`,
+          margin: "0",
+          pointerEvents: "none",
+          zIndex: "40",
+        });
+
+        document.body.appendChild(ghost);
+
+        // Animate the outgoing copy left and fade it away.
+        const exitAnimation = ghost.animate(
+          [
+            {
+              transform: "translateX(0px)",
+              opacity: 1,
+            },
+            {
+              transform: "translateX(-90px)",
+              opacity: 0,
+            },
+          ],
+          {
+            duration: 900,
+            easing: "ease-in-out",
+            fill: "forwards",
+          },
+        );
+
+        void exitAnimation.finished
+          .catch(() => undefined)
+          .then(() => {
+            ghost.remove();
+          });
+      }
+
+      // Move the real cards to their next grid positions.
       setRotation((current) => current + 1);
     }, 6000);
 
     return () => {
       window.clearInterval(timer);
     };
-  }, [filteredVideos, isPaused]);
+  }, [filteredVideos, rotatedVideos, isPaused]);
 
   // animate cards from their previous positions to their new ones
   useLayoutEffect(() => {
@@ -80,6 +145,31 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
 
       if (!previous) return;
 
+      // Special animation for the card that wraps around.
+      if (key === outgoingKey.current) {
+        element.animate(
+          [
+            {
+              opacity: 0,
+              transform: "translateX(30px)",
+            },
+            {
+              opacity: 1,
+              transform: "translateX(0px)",
+            },
+          ],
+          {
+            duration: 800,
+            delay: 250,
+            easing: "ease-out",
+            fill: "backwards",
+          },
+        );
+
+        return;
+      }
+
+      // Normal FLIP animation for all other cards.
       const next = element.getBoundingClientRect();
 
       const deltaX = previous.left - next.left;
@@ -102,6 +192,8 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
         },
       );
     });
+
+    outgoingKey.current = null;
   }, [rotatedVideos]);
 
   const tabs: { label: string; value: YearFilter }[] = [
@@ -133,6 +225,7 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
                   setRotation(0);
                   shouldAnimate.current = false;
                   previousPositions.current.clear();
+                  outgoingKey.current = null;
                 }}
                 aria-pressed={isActive}
                 className={`group relative shrink-0 pb-5 text-lg font-medium transition-colors duration-300 ${
@@ -175,6 +268,7 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
       {/* rotating video grid */}
       {filteredVideos.length > 0 ? (
         <div
+          ref={gridRef}
           onMouseEnter={() => {
             setIsPaused(true);
           }}
@@ -207,7 +301,7 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
                 }}
                 className="min-w-0"
               >
-                <VideoCard {...video} />
+                <VideoCard {...video} onModalChange={setIsVideoOpen} />
               </div>
             );
           })}
