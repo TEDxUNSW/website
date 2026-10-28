@@ -8,6 +8,7 @@ import {
   Source_Serif_4,
   Montserrat,
   Inter,
+  Rubik,
 } from "next/font/google";
 import LocalFont from "next/font/local";
 import "./globals.css";
@@ -111,6 +112,24 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+const rubik = Rubik({
+  variable: "--font-rubik",
+  weight: "700",
+  subsets: ["latin"],
+});
+
+const dseg14 = LocalFont({
+  src: [
+    {
+      path: "../public/fonts/DSEG14Classic-BoldItalic.woff2",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-dseg14",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "TEDxUNSW Official Website",
   description: "TEDxUNSW brings together the passionate minds",
@@ -124,7 +143,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", inter.variable)}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} ${amoresa.variable} ${perandory.variable} ${montserrat.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${handjet.variable} ${imfellEng.variable} ${crimsonPro.variable} ${brixton.variable} ${tnrCondensed.variable} ${sourceSerif4.variable} ${amoresa.variable} ${perandory.variable} ${montserrat.variable} ${dseg14.variable} ${rubik.variable} antialiased`}
       >
         <div className="sticky top-0 z-50 block min-[880px]:hidden">
           <MobileNavBar />

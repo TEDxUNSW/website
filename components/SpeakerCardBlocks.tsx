@@ -1,6 +1,5 @@
 // Code from reactbits tilted cards.
 
-import "./speakerCards.css";
 import TiltedCard from "./SpeakerCards";
 
 interface speakerComponents {

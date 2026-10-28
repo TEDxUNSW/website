@@ -1,0 +1,28 @@
+/* Oversized so the shifted tile always covers its parent */
+.noise-grain {
+  position: absolute;
+  inset: -50%;
+  pointer-events: none;
+  animation: noise-grain-shift 1s steps(1, end) infinite;
+}
+
+@keyframes noise-grain-shift {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-37px, 23px);
+  }
+  50% {
+    transform: translate(19px, -51px);
+  }
+  75% {
+    transform: translate(-61px, -13px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noise-grain {
+    animation: none;
+  }
+}
