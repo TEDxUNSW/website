@@ -116,12 +116,6 @@ const speakers = [
     captionText: "CEO of Women and Girls' Emergency Centre",
   },
   {
-    src: "/speakerCards/Nicole Yade.png",
-    altText: "Nicole Yade",
-    speakerName: "",
-    captionText: "CEO of Women and Girls' Emergency Centre",
-  },
-  {
     src: "/speakerCards/Demas Rusli.png",
     altText: "Demas Rusli",
     speakerName: "",
@@ -278,35 +272,35 @@ export default function Home() {
               <Title titleLg="Speakers" color="white" />
               <SpeakerCardBlocks
                 index_start={0}
-                index_end={6}
+                index_end={5}
                 speakers={speakers}
                 theme={"Aperture"}
                 colour_and_font={"text-[var(--color-white)] font-perandory"}
               />
               <SpeakerCardBlocks
-                index_start={6}
-                index_end={10}
+                index_start={5}
+                index_end={9}
                 speakers={speakers}
                 theme={"Wavelengths"}
                 colour_and_font={"text-[var(--color-white)] font-perandory"}
               />
               <SpeakerCardBlocks
-                index_start={10}
-                index_end={16}
+                index_start={9}
+                index_end={15}
                 speakers={speakers}
                 theme={"Off The Record"}
                 colour_and_font={"text-[var(--color-gold)]"}
               />
               <SpeakerCardBlocks
-                index_start={16}
-                index_end={20}
+                index_start={15}
+                index_end={19}
                 speakers={speakers}
                 theme={"WILDCARD"}
                 colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
               />
               <SpeakerCardBlocks
-                index_start={20}
-                index_end={24}
+                index_start={19}
+                index_end={23}
                 speakers={speakers}
                 theme={"In Plain Sight"}
                 colour_and_font={"font-handjet"}
