@@ -9,7 +9,7 @@ export default function SaveTheDate25T3() {
   return (
     <div className="font-brixton relative w-full h-[700px]">
       <div className="absolute inset-0 pointer-events-none">
-        <Image src="/hero-frame.png" alt="Background" fill objectFit="cover" />
+        <Image src="/hero-frame.avif" alt="Background" fill objectFit="cover" />
         <Dither
           waveColor={[0.85, 0.75, 0.75]}
           disableAnimation={false}
