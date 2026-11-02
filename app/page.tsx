@@ -275,7 +275,7 @@ export default function Home() {
                 index_end={5}
                 speakers={speakers}
                 theme={"Aperture"}
-                colour_and_font={"text-[var(--color-white)] font-perandory"}
+                colour_and_font={"text-[var(--color-white)] font-rubik"}
               />
               <SpeakerCardBlocks
                 index_start={5}
