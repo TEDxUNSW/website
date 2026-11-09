@@ -91,7 +91,7 @@ export default function VideoCard({
           {/* thumbnail image */}
           <div
             className={`relative w-full overflow-hidden ${
-              compact ? "aspect-[2/1]" : "aspect-video"
+              compact ? "aspect-2/1" : "aspect-video"
             }`}
           >
             <Image
@@ -100,6 +100,7 @@ export default function VideoCard({
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
               className="object-cover transition-transform duration-500 ease-out group-hover:scale-110 motion-reduce:transform-none"
+              loading="eager"
             />
 
             {/* dark overlay */}

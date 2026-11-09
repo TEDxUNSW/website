@@ -236,7 +236,7 @@ export default function VideoGallery({ videos }: VideoGalleryProps) {
 
                 {/* red underline */}
                 <span
-                  className={`absolute bottom-0 left-0 h-[3px] w-full origin-center rounded-full bg-red-500 transition-transform duration-300 ease-out ${
+                  className={`absolute bottom-0 left-0 h-0.75 w-full origin-center rounded-full bg-red-500 transition-transform duration-300 ease-out ${
                     isActive ? "scale-x-100" : "scale-x-0"
                   }`}
                 />

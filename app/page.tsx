@@ -178,22 +178,20 @@ export default function Home() {
 
             {/* Featured talks section */}
             <section className="flex w-full flex-col gap-5 py-7">
-              <div className="flex flex-wrap items-end justify-between gap-4">
-                <div>
-                  <h2 className="text-3xl font-bold text-white md:text-4xl">
-                    Featured Talks
-                  </h2>
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <h2 className="text-3xl font-bold text-white md:text-4xl">
+                  Featured Talks
+                </h2>
 
-                  <Link
-                    href="/talks"
-                    className="group flex items-center gap-2 text-sm font-semibold text-red-500 transition-colors hover:text-white"
-                  >
-                    View All Talks
-                    <span className="transition-transform duration-300 group-hover:translate-x-1">
-                      →
-                    </span>
-                  </Link>
-                </div>
+                <Link
+                  href="/talks"
+                  className="group mr-8 flex shrink-0 items-center gap-2 text-base font-semibold text-red-500 transition-colors hover:text-white"
+                >
+                  View All Talks
+                  <span className="transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
+                </Link>
               </div>
 
               <div className="mx-auto w-full max-w-6xl">

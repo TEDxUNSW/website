@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState, useRef } from "react";
-
+import {
+  animate,
+  motion,
+  useMotionValue,
+  useReducedMotion,
+} from "motion/react";
 import VideoCard, { type VideoItem } from "./VideoCards";
 
 interface FeaturedTalksProps {
@@ -9,8 +14,8 @@ interface FeaturedTalksProps {
   limit?: number;
 }
 
-const ROTATION_INTERVAL = 6000;
-const TRANSITION_DURATION = 1000;
+const GAP = 12;
+const SPEED = 35;
 
 export default function FeaturedTalks({
   videos,
@@ -18,197 +23,153 @@ export default function FeaturedTalks({
 }: FeaturedTalksProps) {
   const featuredVideos = useMemo(() => videos.slice(0, limit), [videos, limit]);
 
-  const [rotation, setRotation] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const controlsRef = useRef<ReturnType<typeof animate> | null>(null);
+
+  const x = useMotionValue(0);
+  const reducedMotion = useReducedMotion();
+
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [columns, setColumns] = useState(3);
   const [isPaused, setIsPaused] = useState(false);
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [isSliding, setIsSliding] = useState(false);
-  const [slideDistance, setSlideDistance] = useState(0);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
-  const trackRef = useRef<HTMLDivElement>(null);
-  const slidingRef = useRef(false);
-  const hoveredRef = useRef(false);
-  const focusedRef = useRef(false);
-
-  // Keep the number of visible cards responsive.
+  // Measure width and determine responsive columns.
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
     const desktopQuery = window.matchMedia("(min-width: 1024px)");
-    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-    function updateLayout() {
-      setVisibleCount(desktopQuery.matches ? 3 : 2);
-      setReducedMotion(motionQuery.matches);
-    }
+    const updateSize = () => {
+      setContainerWidth(container.clientWidth);
+      setColumns(desktopQuery.matches ? 3 : 2);
+    };
 
-    updateLayout();
+    const observer = new ResizeObserver(updateSize);
+    observer.observe(container);
 
-    desktopQuery.addEventListener("change", updateLayout);
-    motionQuery.addEventListener("change", updateLayout);
+    desktopQuery.addEventListener("change", updateSize);
+    updateSize();
 
     return () => {
-      desktopQuery.removeEventListener("change", updateLayout);
-      motionQuery.removeEventListener("change", updateLayout);
+      observer.disconnect();
+      desktopQuery.removeEventListener("change", updateSize);
     };
   }, []);
 
-  // Include one extra card for the slide-in animation.
-  const visibleVideos = useMemo(() => {
-    if (featuredVideos.length === 0) return [];
-
-    const count = Math.min(visibleCount + 1, featuredVideos.length);
-
-    return Array.from({ length: count }, (_, index) => {
-      const videoIndex = (rotation + index) % featuredVideos.length;
-      return featuredVideos[videoIndex];
-    }).filter((video): video is VideoItem => video !== undefined);
-  }, [featuredVideos, rotation, visibleCount]);
-
-  function advance() {
-    if (slidingRef.current || featuredVideos.length <= visibleCount) return;
-
-    if (reducedMotion) {
-      setRotation((current) => current + 1);
-      return;
-    }
-
-    const track = trackRef.current;
-    if (!track || track.children.length < 2) return;
-
-    const first = track.children[0] as HTMLElement;
-    const second = track.children[1] as HTMLElement;
-
-    // Distance between the first two card positions.
-    const distance = second.offsetLeft - first.offsetLeft;
-
-    slidingRef.current = true;
-    setSlideDistance(distance);
-    setIsSliding(true);
-  }
-
-  function finishSlide() {
-    if (!slidingRef.current) return;
-
-    slidingRef.current = false;
-
-    // Advance the data and reset the track together.
-    setRotation((current) => current + 1);
-    setIsSliding(false);
-    setSlideDistance(0);
-  }
-
-  // Automatically advance every six seconds.
+  // Pause scrolling when the section is outside the viewport.
   useEffect(() => {
-    if (
-      isPaused ||
-      isVideoOpen ||
-      isSliding ||
-      featuredVideos.length <= visibleCount
-    ) {
-      return;
-    }
+    const container = containerRef.current;
+    if (!container) return;
 
-    const timer = window.setInterval(() => {
-      if (document.visibilityState === "visible") {
-        advance();
-      }
-    }, ROTATION_INTERVAL);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry?.isIntersecting ?? false);
+      },
+      { threshold: 0.1 },
+    );
+
+    observer.observe(container);
 
     return () => {
-      window.clearInterval(timer);
+      observer.disconnect();
     };
-  }, [
-    featuredVideos.length,
-    visibleCount,
-    isPaused,
-    isVideoOpen,
-    isSliding,
-    reducedMotion,
-  ]);
+  }, []);
 
-  // Stop an active transition safely when the layout changes.
+  const visibleColumns = Math.min(columns, featuredVideos.length);
+
+  const cardWidth =
+    containerWidth > 0 && visibleColumns > 0
+      ? (containerWidth - GAP * (visibleColumns - 1)) / visibleColumns
+      : 0;
+
+  // Distance needed to scroll exactly one complete set.
+  const loopDistance = featuredVideos.length * (cardWidth + GAP);
+
+  const shouldScroll =
+    featuredVideos.length > visibleColumns && !reducedMotion && cardWidth > 0;
+
+  // Create one continuously repeating linear animation.
   useEffect(() => {
-    if (slidingRef.current) {
-      finishSlide();
+    if (!shouldScroll || loopDistance <= 0) {
+      x.set(0);
+      return;
     }
-  }, [visibleCount, reducedMotion]);
 
-  function updatePause() {
-    setIsPaused(hoveredRef.current || focusedRef.current);
-  }
+    const controls = animate(x, [0, -loopDistance], {
+      duration: loopDistance / SPEED,
+      ease: "linear",
+      repeat: Infinity,
+      repeatType: "loop",
+    });
+
+    controlsRef.current = controls;
+
+    return () => {
+      controls.stop();
+      controlsRef.current = null;
+    };
+  }, [x, loopDistance, shouldScroll]);
+
+  // Pause and resume without losing scroll position.
+  useEffect(() => {
+    const controls = controlsRef.current;
+    if (!controls) return;
+
+    if (isPaused || isVideoOpen || !isVisible) {
+      controls.pause();
+    } else {
+      controls.play();
+    }
+  }, [isPaused, isVideoOpen, isVisible, loopDistance, shouldScroll]);
+
+  const renderVideo = (video: VideoItem, index: number) => (
+    <div
+      key={`${video.year.toString()}-${video.title}-${index.toString()}`}
+      className="min-w-0 shrink-0"
+      style={{ width: cardWidth }}
+    >
+      <VideoCard {...video} compact onModalChange={setIsVideoOpen} />
+    </div>
+  );
 
   return (
     <section
       className="w-full"
-      aria-label="Featured talks"
+      aria-label="Featured TEDxUNSW talks"
       onMouseEnter={() => {
-        hoveredRef.current = true;
-        updatePause();
+        setIsPaused(true);
       }}
       onMouseLeave={() => {
-        hoveredRef.current = false;
-        updatePause();
+        setIsPaused(false);
       }}
       onFocusCapture={() => {
-        focusedRef.current = true;
-        updatePause();
+        setIsPaused(true);
       }}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) {
-          focusedRef.current = false;
-          updatePause();
+          setIsPaused(false);
         }
       }}
     >
-      {/* Clip the extra card outside the viewport */}
-      <div className="overflow-hidden pb-2">
-        <div
-          ref={trackRef}
-          onTransitionEnd={(event) => {
-            if (
-              event.target === event.currentTarget &&
-              event.propertyName === "transform"
-            ) {
-              finishSlide();
-            }
-          }}
-          className="flex gap-3"
-          style={{
-            transform: isSliding
-              ? `translate3d(-${slideDistance.toString()}px, 0, 0)`
-              : "translate3d(0, 0, 0)",
-            transition: isSliding
-              ? `transform ${TRANSITION_DURATION.toString()}ms cubic-bezier(0.22, 1, 0.36, 1)`
-              : "none",
-          }}
-        >
-          {visibleVideos.map((video, index) => {
-            const videoKey =
-              video.src || `${video.year.toString()}-${video.title}`;
+      <div ref={containerRef} className="w-full overflow-hidden py-3">
+        {cardWidth > 0 && (
+          <motion.div className="flex w-max" style={{ x, gap: GAP }}>
+            {/* Original set of videos */}
+            <div className="flex shrink-0" style={{ gap: GAP }}>
+              {featuredVideos.map(renderVideo)}
+            </div>
 
-            return (
-              <div
-                key={videoKey}
-                className="min-w-0 shrink-0 basis-[calc((100%-0.75rem)/2)] lg:basis-[calc((100%-1.5rem)/3)]"
-                style={{
-                  opacity: isSliding && index === 0 ? 0 : 1,
-                  transition:
-                    isSliding && index === 0
-                      ? "opacity 700ms ease-out"
-                      : "none",
-                }}
-              >
-                <VideoCard
-                  {...video}
-                  compact
-                  onModalChange={(open) => {
-                    setIsVideoOpen(open);
-                  }}
-                />
+            {/* Identical set for seamless looping */}
+            {shouldScroll && (
+              <div className="flex shrink-0" style={{ gap: GAP }}>
+                {featuredVideos.map(renderVideo)}
               </div>
-            );
-          })}
-        </div>
+            )}
+          </motion.div>
+        )}
       </div>
     </section>
   );
