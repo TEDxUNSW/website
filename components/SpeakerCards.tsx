@@ -24,6 +24,7 @@ interface TiltedCardProps {
   showTooltip?: boolean;
   overlayContent?: React.ReactNode;
   displayOverlayContent?: boolean;
+  event?: number;
 }
 
 export default function TiltedCard({
@@ -98,6 +99,7 @@ export default function TiltedCard({
       style={{
         height: containerHeight,
         width: containerWidth,
+        zIndex: 0,
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}

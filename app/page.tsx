@@ -104,16 +104,10 @@ const srcs = [
 
 const speakers = [
   {
-    src: "/speakerCards/Paris Jade Burrows.png",
-    altText: "Paris Jade Burrows",
-    speakerName: "",
-    captionText: "Fashion Designer",
-  },
-  {
     src: "/speakerCards/S. Fahad Ahmad.png",
     altText: "S. Fahad Ahmad",
     speakerName: "",
-    captionText: "CEO of Women and Girls' Emergency Centre",
+    captionText: "UNSW Student",
   },
   {
     src: "/speakerCards/Demas Rusli.png",
@@ -272,38 +266,43 @@ export default function Home() {
               <Title titleLg="Speakers" color="white" />
               <SpeakerCardBlocks
                 index_start={0}
-                index_end={5}
+                index_end={4}
                 speakers={speakers}
                 theme={"Aperture"}
                 colour_and_font={"text-[var(--color-white)] font-rubik"}
+                display_overlay={false}
               />
               <SpeakerCardBlocks
-                index_start={5}
-                index_end={9}
+                index_start={4}
+                index_end={8}
                 speakers={speakers}
                 theme={"Wavelengths"}
                 colour_and_font={"text-[var(--color-white)] font-perandory"}
+                display_overlay={true}
               />
               <SpeakerCardBlocks
-                index_start={9}
-                index_end={15}
+                index_start={8}
+                index_end={14}
                 speakers={speakers}
                 theme={"Off The Record"}
                 colour_and_font={"text-[var(--color-gold)]"}
+                display_overlay={true}
               />
               <SpeakerCardBlocks
-                index_start={15}
-                index_end={19}
+                index_start={14}
+                index_end={18}
                 speakers={speakers}
                 theme={"WILDCARD"}
                 colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
+                display_overlay={true}
               />
               <SpeakerCardBlocks
-                index_start={19}
-                index_end={23}
+                index_start={18}
+                index_end={22}
                 speakers={speakers}
                 theme={"In Plain Sight"}
                 colour_and_font={"font-handjet"}
+                display_overlay={true}
               />
             </div>
             <div className="flex gap-5 flex-col sm:flex-row md:gap-20">
