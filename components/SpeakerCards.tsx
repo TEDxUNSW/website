@@ -24,6 +24,7 @@ interface TiltedCardProps {
   showTooltip?: boolean;
   overlayContent?: React.ReactNode;
   displayOverlayContent?: boolean;
+  event?: number;
 }
 
 export default function TiltedCard({
@@ -45,6 +46,8 @@ export default function TiltedCard({
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const [z, setZ] = useState<number>(0);
+
   const rotateX = useSpring(useMotionValue(0), springValues);
   const rotateY = useSpring(useMotionValue(0), springValues);
   const scale = useSpring(1, springValues);
@@ -81,6 +84,7 @@ export default function TiltedCard({
   function handleMouseEnter() {
     scale.set(scaleOnHover);
     opacity.set(1);
+    setZ(1);
   }
 
   function handleMouseLeave() {
@@ -89,6 +93,7 @@ export default function TiltedCard({
     rotateX.set(0);
     rotateY.set(0);
     rotateFigcaption.set(0);
+    setZ(0);
   }
 
   return (
@@ -98,6 +103,7 @@ export default function TiltedCard({
       style={{
         height: containerHeight,
         width: containerWidth,
+        zIndex: z,
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}

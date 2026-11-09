@@ -13,6 +13,7 @@ interface speakerComponents {
   }[];
   theme: string;
   colour_and_font?: string;
+  display_overlay?: boolean;
 }
 
 export default function SpeakerCardBlocks({
@@ -21,6 +22,7 @@ export default function SpeakerCardBlocks({
   speakers,
   theme,
   colour_and_font,
+  display_overlay,
 }: speakerComponents) {
   return (
     <div className={colour_and_font}>
@@ -36,6 +38,7 @@ export default function SpeakerCardBlocks({
               overlayContent={
                 <p className="tilted-card-demo-text">{speakers.speakerName}</p>
               }
+              displayOverlayContent={display_overlay}
             />
           );
         })}

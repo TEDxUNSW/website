@@ -104,6 +104,30 @@ const srcs = [
 
 const speakers = [
   {
+    src: "/speakerCards/S. Fahad Ahmad.png",
+    altText: "S. Fahad Ahmad",
+    speakerName: "",
+    captionText: "UNSW Student",
+  },
+  {
+    src: "/speakerCards/Demas Rusli.png",
+    altText: "Demas Rusli",
+    speakerName: "",
+    captionText: "Photographer and Designer",
+  },
+  {
+    src: "/speakerCards/Doadenz.png",
+    altText: "Doadenz",
+    speakerName: "",
+    captionText: "Ghanaian-Australian Rapper",
+  },
+  {
+    src: "/speakerCards/Roanna Chan.png",
+    altText: "Roanna Chen",
+    speakerName: "",
+    captionText: "Clinical Psychologist",
+  },
+  {
     src: "/speakerCards/Alex Lee.jpg",
     altText: "Alex Lee",
     speakerName: "Alex Lee",
@@ -244,29 +268,41 @@ export default function Home() {
                 index_start={0}
                 index_end={4}
                 speakers={speakers}
-                theme={"Wavelengths"}
-                colour_and_font={"text-[var(--color-white)] font-perandory"}
+                theme={"Aperture"}
+                colour_and_font={"text-[var(--color-white)] font-rubik"}
+                display_overlay={false}
               />
               <SpeakerCardBlocks
                 index_start={4}
-                index_end={10}
+                index_end={8}
+                speakers={speakers}
+                theme={"Wavelengths"}
+                colour_and_font={"text-[var(--color-white)] font-perandory"}
+                display_overlay={true}
+              />
+              <SpeakerCardBlocks
+                index_start={8}
+                index_end={14}
                 speakers={speakers}
                 theme={"Off The Record"}
                 colour_and_font={"text-[var(--color-gold)]"}
-              />
-              <SpeakerCardBlocks
-                index_start={10}
-                index_end={14}
-                speakers={speakers}
-                theme={"WILDCARD"}
-                colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
+                display_overlay={true}
               />
               <SpeakerCardBlocks
                 index_start={14}
                 index_end={18}
                 speakers={speakers}
+                theme={"WILDCARD"}
+                colour_and_font={"text-[var(--color-red)] font-sourceSerif4"}
+                display_overlay={true}
+              />
+              <SpeakerCardBlocks
+                index_start={18}
+                index_end={22}
+                speakers={speakers}
                 theme={"In Plain Sight"}
                 colour_and_font={"font-handjet"}
+                display_overlay={true}
               />
             </div>
             <div className="flex gap-5 flex-col sm:flex-row md:gap-20">
