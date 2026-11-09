@@ -16,7 +16,7 @@ export const events: EventCard[] = [
     src: "/EventPageAssets/Aperture.png",
     altText: "Aperture",
     eventName: "Aperture",
-    url: "/events",
+    url: "/events/Aperture",
   },
   {
     src: "/EventPageAssets/InPlainSight.png",
