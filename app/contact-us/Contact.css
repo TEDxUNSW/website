@@ -2,3 +2,8 @@ button:hover {
   color: black;
   background: rgb(255, 85, 85);
 }
+
+Image {
+  justify-content: center;
+  align-items: center;
+}
