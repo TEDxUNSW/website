@@ -26,7 +26,7 @@ const videos: VideoItem[] = [
     year: 2026,
   },
   {
-    src: "https://www.youtube.com/embed/?autoplay=1",
+    src: "https://www.youtube.com/embed/WbsrS-NHUOA?autoplay=1",
     titleImg: "AndrewDempster.jpg",
     title: "Can You Trust Your GPS?",
     speaker: "Andrew Dempster",
