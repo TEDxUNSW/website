@@ -276,3 +276,29 @@ button:hover {
     @apply font-sans;
   }
 }
+
+
+@keyframes gallery-enter {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-gallery-enter {
+  opacity: 0;
+  animation: gallery-enter 550ms ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gallery-enter {
+    opacity: 1;
+    animation: none;
+  }
+}
+
